@@ -31,7 +31,9 @@ public class Javabowl {
             System.out.println("-------------------------------");
             firstquestion();
             answerquestion1();
-
+        }
+        if(x.equals("no")) {
+            System.out.println("Ok, go then, and be a negger u dumb ass bitch.");
         }
     }
 
@@ -100,7 +102,6 @@ public class Javabowl {
 
     public static void answerquestion2() {
         while(true) {
-            System.out.println("                                              ");
             System.out.println("-----------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
@@ -186,6 +187,7 @@ public class Javabowl {
 
     public static void thirdquestionanswer() {
         while(true){
+            System.out.println("                                               ");
             System.out.println("-----------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
@@ -235,6 +237,7 @@ public class Javabowl {
 
     public static void fourthquestionanswer() {
         while(true) {
+            System.out.println("                                                 ");
             System.out.println("-------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
@@ -619,6 +622,7 @@ public class Javabowl {
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
                 eigthquestion();
+                eigthquestionanswer();
                 break;
             }
         }
@@ -639,6 +643,7 @@ public class Javabowl {
 
     public static void eigthquestionanswer() {
         while(true) {
+            System.out.println("                                                  ");
             System.out.println("--------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
@@ -648,8 +653,277 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------");
+                ninthquestion();
+                ninthquestionanswer();
                 break;
             }
+            else if(Eigthpart.equals("Francais")) {
+                System.out.println("-------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("---------------------------------------------");
+                ninthquestion();
+                ninthquestionanswer();
+                break;
+            }
+            else if(Eigthpart.equals("language of france")) {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-----------------------------------------------");
+                ninthquestion();
+                ninthquestionanswer();
+                break;
+            }
+            else if(Eigthpart.equals("french")) {
+                System.out.println("-----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-----------------------------------------------");
+                ninthquestion();
+                ninthquestionanswer();
+                break;
+            }
+            else if(Eigthpart.equals("francais")) {
+                System.out.println("------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("------------------------------------------------");
+                ninthquestion();
+                ninthquestionanswer();
+                break;
+            }
+            else {
+                System.out.println("------------------------------------------------");
+                System.out.println("That is incorrect, neg 5.");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-------------------------------------------------");
+                ninthquestion();
+                ninthquestionanswer();
+                break;
+            }
+        }
+    }
+
+    public static void ninthquestion() {
+        try{
+            FileReader reader = new FileReader("ques9.txt");
+            int character;
+            while((character = reader.read ()) != -1) {
+                System.out.print((char)character);
+            }
+            reader.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void ninthquestionanswer() {
+        while(true){
+            System.out.println("                                                ");
+            System.out.println("------------------------------------------------");
+            System.out.println("Now, you have 10 seconds to answer the Question.");
+            Scanner scan = new Scanner(System.in);
+            String Ninthpart = scan.nextLine();
+            if(Ninthpart.equals("Camillo Golgi")) {
+                System.out.println("-----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-----------------------------------------------");
+                tenthquestion(); 
+                tenthquestionanswer();
+                break;
+            }
+            else if(Ninthpart.equals("Golgi stain")) {
+                System.out.println("------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+            else if(Ninthpart.equals("Golgi body")) {
+                System.out.println("--------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+            else if(Ninthpart.equals("Golgi apparatus")) {
+                System.out.println("--------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("---------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+            else if(Ninthpart.equals("Golgi")) {
+                System.out.println("----------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+            else if(Ninthpart.equals("camillo golgi")) {
+                System.out.println("----------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-----------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+            else if(Ninthpart.equals("golgi")) {
+                System.out.println("------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("------------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+            else if(Ninthpart.equals("golgi stain")) {
+                System.out.println("------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-----------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+            else if(Ninthpart.equals("golgi body")) {
+                System.out.println("------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("------------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+            else if(Ninthpart.equals("golgi apparatus")) {
+                System.out.println("-------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-------------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+            else {
+                System.out.println("------------------------------------------------------");
+                System.out.println("That is incorrect, neg 5.");
+                System.out.println("Be ready for the next Question");
+                System.out.println("------------------------------------------------------");
+                tenthquestion();
+                tenthquestionanswer();
+                break;
+            }
+        }
+    }
+
+    public static void tenthquestion() {
+        try{
+            FileReader reader = new FileReader("ques10.txt");
+            int character;
+            while((character = reader.read ()) != -1)  {
+                System.out.print((char)character);
+            }
+            reader.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void tenthquestionanswer(){
+        while(true) {
+            System.out.println("                                                              ");
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("Now, you have 10 seconds to answer the Question.");
+            Scanner scan = new Scanner(System.in);
+            String Tenthpart = scan.nextLine();
+            if(Tenthpart.equals("Thor's hammer")) {
+                System.out.println("---------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("---------------------------------------------------------");
+                eleventhquestion();
+                break;
+            }
+            else if(Tenthpart.equals("Mjolnier")) {
+                System.out.println("---------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------------------");
+                eleventhquestion();
+                break;
+            }
+            else if(Tenthpart.equals("hammer of thor")) {
+                System.out.println("--------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------------------");
+                eleventhquestion();
+                break;
+            }
+            else if(Tenthpart.equals("Hammer")) {
+                System.out.println("---------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------------------");
+                eleventhquestion();
+                break;
+            }
+            else if(Tenthpart.equals("Thors hammer")) {
+                System.out.println("--------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------------------");
+                eleventhquestion();
+                break;
+            }
+            else if(Tenthpart.equals("mjolnier")) {
+                System.out.println("-------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("------------------------------------------------------");
+                eleventhquestion();
+                break;
+            }
+            else if(Tenthpart.equals("Hammer of Thor")) {
+                System.out.println("--------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-------------------------------------------------------");
+                eleventhquestion();
+                break;
+            }
+            else{
+                System.out.println("--------------------------------------------------------");
+                System.out.println("That is incorrect, neg 5.");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------------------");
+                eleventhquestion();
+                break;
+            }
+        }
+    }
+
+    public static void eleventhquestion() {
+        try{
+            FileReader reader = new FileReader("ques11.txt");
+            int character;
+            while((character = reader.read ()) != -1) {
+                System.out.print((char)character);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

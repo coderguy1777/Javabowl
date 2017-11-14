@@ -3,4 +3,4 @@ intensity of this process is given by the square of n- 1 minus n-2, over n-1 plu
 equations. For a properly polarized input, this process does not occur at Brewsters angle. Light propagating
 above the critical angle is transmitted in optical fibers via the total internal type of this process. After the
 specular type of this process, the angle of the outgoing ray equals the angle of incidence. For 10 points, name this
-optical process in which light bounces off of surfaces like mirrors
+optical process in which light bounces off of surfaces like mirrors.
