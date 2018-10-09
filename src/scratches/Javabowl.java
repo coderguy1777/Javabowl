@@ -2,6 +2,7 @@ package scratches;
 
 import java.util.Scanner;
 import java.io.*;
+import java.util.TimerTask;
 
 public class Javabowl {
     public static int Correctanswer = 10;
@@ -70,6 +71,7 @@ public class Javabowl {
                 System.out.println("That is correct, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 secondquestion();
                 answerquestion2();
                 break;
@@ -78,18 +80,21 @@ public class Javabowl {
                 System.out.println("That is correct, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 secondquestion();
                 answerquestion2();
                 break;
             } else if (Answer.equals("")) {
-
                 System.out.println("That is invalid input, neg 5.");
-
+                wronganswerinput();
+                secondquestion();
+                answerquestion2();
             } else {
                 System.out.println("-------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("------------------------------------------------");
+                wronganswerinput();
                 secondquestion();
                 answerquestion2();
                 break;
@@ -123,6 +128,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
@@ -131,6 +137,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
@@ -139,6 +146,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
@@ -147,6 +155,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
@@ -155,6 +164,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
@@ -163,6 +173,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
@@ -171,6 +182,7 @@ public class Javabowl {
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("------------------------------------------------");
+                wronganswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
@@ -192,11 +204,6 @@ public class Javabowl {
         }
     }
 
-    /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
     public static void thirdquestionanswer() {
         while (true) {
             System.out.println("                                               ");
@@ -209,6 +216,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("---------------------------------------");
+                correctanswerinput();
                 fourthquestion();
                 fourthquestionanswer();
                 break;
@@ -217,6 +225,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------");
+                correctanswerinput();
                 fourthquestion();
                 fourthquestionanswer();
                 break;
@@ -225,6 +234,7 @@ public class Javabowl {
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------");
+                wronganswerinput();
                 fourthquestion();
                 fourthquestionanswer();
                 break;
@@ -232,11 +242,6 @@ public class Javabowl {
         }
     }
 
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print.
-     * The Return Value of this method is the printed text file in the terminal.
-     */
     public static void fourthquestion() {
         try {
             FileReader reader = new FileReader("ques4.txt");
@@ -250,11 +255,6 @@ public class Javabowl {
         }
     }
 
-    /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
     public static void fourthquestionanswer() {
         while (true) {
             System.out.println("                                                 ");
@@ -267,6 +267,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------");
+                correctanswerinput();
                 fifthquestion();
                 fifthquestionanswer();
                 break;
@@ -275,6 +276,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------");
+                correctanswerinput();
                 fifthquestion();
                 fifthquestionanswer();
                 break;
@@ -283,6 +285,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------");
+                correctanswerinput();
                 fifthquestion();
                 fifthquestionanswer();
                 break;
@@ -291,6 +294,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------");
+                correctanswerinput();
                 fifthquestion();
                 fifthquestionanswer();
                 break;
@@ -299,6 +303,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------");
+                correctanswerinput();
                 fifthquestion();
                 fifthquestionanswer();
                 break;
@@ -307,6 +312,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------");
+                correctanswerinput();
                 fifthquestion();
                 fifthquestionanswer();
                 break;
@@ -315,6 +321,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------");
+                correctanswerinput();
                 fifthquestion();
                 fifthquestionanswer();
                 break;
@@ -323,6 +330,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------");
+                correctanswerinput();
                 fifthquestion();
                 fifthquestionanswer();
                 break;
@@ -331,6 +339,7 @@ public class Javabowl {
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------");
+                wronganswerinput();
                 fifthquestion();
                 fifthquestionanswer();
                 break;
@@ -364,6 +373,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 sixthquestion();
                 sixthquestionanswer();
                 break;
@@ -372,6 +382,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 sixthquestion();
                 sixthquestionanswer();
                 break;
@@ -380,6 +391,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 sixthquestion();
                 sixthquestionanswer();
                 break;
@@ -388,6 +400,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 sixthquestion();
                 sixthquestionanswer();
                 break;
@@ -396,6 +409,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 sixthquestion();
                 sixthquestionanswer();
                 break;
@@ -404,6 +418,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 sixthquestion();
                 sixthquestionanswer();
                 break;
@@ -412,6 +427,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 sixthquestion();
                 sixthquestionanswer();
                 break;
@@ -420,6 +436,7 @@ public class Javabowl {
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                wronganswerinput();
                 sixthquestion();
                 sixthquestionanswer();
                 break;
@@ -462,6 +479,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                correctanswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
@@ -470,6 +488,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                correctanswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
@@ -478,6 +497,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                correctanswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
@@ -486,6 +506,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                correctanswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
@@ -494,6 +515,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                correctanswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
@@ -510,6 +532,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                correctanswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
@@ -518,6 +541,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                correctanswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
@@ -526,6 +550,7 @@ public class Javabowl {
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                wronganswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
@@ -560,6 +585,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
@@ -568,6 +594,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
@@ -576,6 +603,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
@@ -584,6 +612,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
@@ -592,6 +621,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
@@ -600,6 +630,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
@@ -608,6 +639,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
@@ -616,6 +648,7 @@ public class Javabowl {
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                wronganswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
@@ -623,11 +656,6 @@ public class Javabowl {
         }
     }
 
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print.
-     * The Return Value of this method is the printed text file in the terminal.
-     */
     public static void eigthquestion() {
         try {
             FileReader reader = new FileReader("ques8.txt");
@@ -641,11 +669,6 @@ public class Javabowl {
         }
     }
 
-    /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
     public static void eigthquestionanswer() {
         while (true) {
             System.out.println("                                                  ");
@@ -658,6 +681,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
@@ -666,6 +690,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("---------------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
@@ -674,6 +699,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
@@ -682,6 +708,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
@@ -690,6 +717,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
@@ -698,6 +726,7 @@ public class Javabowl {
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------------");
+                wronganswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
@@ -731,6 +760,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
@@ -739,6 +769,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
@@ -755,6 +786,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("---------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
@@ -763,6 +795,7 @@ public class Javabowl {
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
@@ -1820,6 +1853,17 @@ public class Javabowl {
 
     private static void FinalScoreOutput() {
         System.out.println("Your total score is:" + " " + totalscore);
+    }
+
+    abstract class QuestionTimer extends TimerTask {
+
+        public void timerparameters() {
+
+        }
+
+        public void PromptTimer() {
+
+        }
     }
 }
 
