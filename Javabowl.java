@@ -1,17 +1,17 @@
-import java.util.*;
-import java.io.*;
+package scratches;
+
 import java.util.Scanner;
-import java.util.Timer;
+import java.io.*;
 import java.util.TimerTask;
+
 public class Javabowl {
-    /*
-     * The Main Method here has the first parameter of sending out what the rules of the main program are, etc.
-     * The Second Parameter of this main method is to input whether the player wants to continue by typing in yes or no. 
-     * The Return Value of this mathod is either the program continuing or ending the program and running through the Questions or not. 
-     */
-    public static void main(String[]args) {
+    public static int Correctanswer = 10;
+    public static int WrongAnswer = 5;
+    public static int totalscore;
+
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Hello Quizbowl Player, Welcome to Javabowl.");
+        System.out.println("Hello Quizbowl Player, Welcome to scratches.Javabowl.Javabowl.");
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("This is meant to test your Quizbowl Skills and be more accurate than protobowl");
         System.out.println("------------------------------------------------------------------------------");
@@ -24,31 +24,27 @@ public class Javabowl {
         System.out.println("Now, type your choice!");
         scan = new Scanner(System.in);
         String x = scan.next();
-        if(x.equals("Yes")) {
+        if (x.equals("Yes")) {
             System.out.println("Alright then, Lets get started!");
             System.out.println("-------------------------------");
             firstquestion();
             answerquestion1();
         }
-        if(x.equals("No")) { 
+        if (x.equals("No")) {
             System.out.println("Ok, go then, and be a negger u dumb ass bitch.");
         }
-        if(x.equals("yes")) {
+        if (x.equals("yes")) {
             System.out.println("Alright then, Lets get started!");
             System.out.println("-------------------------------");
             firstquestion();
             answerquestion1();
         }
-        if(x.equals("no")) {
+        if (x.equals("no")) {
             System.out.println("Ok, go then, and be a negger u dumb ass bitch.");
         }
     }
 
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
     public static void firstquestion() {
         try {
             FileReader reader = new FileReader("ques1.txt");
@@ -61,47 +57,44 @@ public class Javabowl {
             e.printStackTrace();
         }
     }
-    
-    /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void answerquestion1() {
-        while(true) {
+        while (true) {
             System.out.println("                                  ");
             System.out.println("-----------------------------------------------");
             System.out.println("Now you have 10 seconds to answer the next Question.");
             Scanner scan = new Scanner(System.in);
             String Answer = scan.next();
-            if(Answer.equals("reflection")) {
+            if (Answer.equals("reflection")) {
                 System.out.println("-----------------------------------------------");
                 System.out.println("That is correct, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 secondquestion();
                 answerquestion2();
                 break;
-            }
-            else if(Answer.equals("Reflection")) {
+            } else if (Answer.equals("Reflection")) {
                 System.out.println("------------------------------------------------");
                 System.out.println("That is correct, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 secondquestion();
                 answerquestion2();
                 break;
-            }
-            else if(Answer.equals("")) {
-
+            } else if (Answer.equals("")) {
                 System.out.println("That is invalid input, neg 5.");
-
-            }
-            else{
+                wronganswerinput();
+                secondquestion();
+                answerquestion2();
+            } else {
                 System.out.println("-------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("------------------------------------------------");
+                wronganswerinput();
                 secondquestion();
                 answerquestion2();
                 break;
@@ -109,391 +102,101 @@ public class Javabowl {
         }
     }
 
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
-    public static void secondquestion () {
-        try{
+    public static void secondquestion() {
+        try {
             FileReader reader = new FileReader("ques2.txt");
             int character;
-            while((character = reader.read()) != -1 ) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void answerquestion2() {
-        while(true) {
+        while (true) {
             System.out.println("                                               ");
             System.out.println("-----------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
             String secondAnswer = scan.next();
-            if(secondAnswer.equals("Napoleon")) {
+            if (secondAnswer.equals("Napoleon")) {
                 System.out.println("--------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
-            }
-            else if(secondAnswer.equals("Bonaparte")) {
+            } else if (secondAnswer.equals("Bonaparte")) {
                 System.out.println("--------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
-            }
-            else if(secondAnswer.equals("Napoleon 1st.")) {
+            } else if (secondAnswer.equals("Napoleon 1st.")) {
                 System.out.println("--------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
-            }
-            else if(secondAnswer.equals("Bunoaparte")) {
+            } else if (secondAnswer.equals("Bunoaparte")) {
                 System.out.println("-------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
-            }
-            else if(secondAnswer.equals("Napoleonic Code")) {
+            } else if (secondAnswer.equals("Napoleonic Code")) {
                 System.out.println("-------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
-            }
-            else if(secondAnswer.equals("napoleon")) {
+            } else if (secondAnswer.equals("napoleon")) {
                 System.out.println("-------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question!");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("------------------------------------------------");
+                wronganswerinput();
                 thirdquestion();
                 thirdquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void thirdquestion() {
-        try{
+        try {
             FileReader reader = new FileReader("ques3.txt");
             int character;
-            while((character = reader.read()) != -1 ) {
-                System.out.print((char)character);
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
-    public static void thirdquestionanswer() {
-        while(true){
-            System.out.println("                                               ");
-            System.out.println("-----------------------------------------------");
-            System.out.println("Now, you have 10 seconds to answer the Question.");
-            Scanner scan = new Scanner(System.in);
-            String Thirdpart = scan.nextLine();
-            if(Thirdpart.equals("Farewell to Arms")) {
-                System.out.println("---------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("---------------------------------------");
-                fourthquestion();
-                fourthquestionanswer();
-                break;
-            }
-            else if(Thirdpart.equals("farewell to arms")) {
-                System.out.println("----------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------");
-                fourthquestion();
-                fourthquestionanswer();
-                break;
-            }
-            else {
-                System.out.println("----------------------------------------");
-                System.out.println("That is incorrect, neg 5.");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------");
-                fourthquestion();
-                fourthquestionanswer();
-                break;
-            }
-        }
-    }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
-    public static void fourthquestion() {
-        try{
-            FileReader reader = new FileReader("ques4.txt");
-            int character;
-            while((character = reader.read()) != -1) {
-                System.out.print((char)character);
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
-    public static void fourthquestionanswer() {
-        while(true) {
-            System.out.println("                                                 ");
-            System.out.println("-------------------------------------------------");
-            System.out.println("Now, you have 10 seconds to answer the Question.");
-            Scanner scan = new Scanner(System.in);
-            String Fourthpart = scan.nextLine();
-            if(Fourthpart.equals("Pol Pot")) {
-                System.out.println("----------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------------");
-                fifthquestion();
-                fifthquestionanswer();
-                break;
-            }
-            else if(Fourthpart.equals("Pot")) {
-                System.out.println("----------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------------");
-                fifthquestion();
-                fifthquestionanswer();
-                break;
-            }
-            else if(Fourthpart.equals("Saloth Sar")) {
-                System.out.println("----------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------------");
-                fifthquestion();
-                fifthquestionanswer();
-                break;
-            }
-            else if(Fourthpart.equals("Saloth")) {
-                System.out.println("----------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------------");
-                fifthquestion();
-                fifthquestionanswer();
-                break;
-            }
-            else if(Fourthpart.equals("pot")) {
-                System.out.println("----------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------------");
-                fifthquestion();
-                fifthquestionanswer();
-                break;
-            }
-            else if(Fourthpart.equals("pol pot")) {
-                System.out.println("----------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------------");
-                fifthquestion();
-                fifthquestionanswer();
-                break;
-            }
-            else if(Fourthpart.equals("saloth sar")) {
-                System.out.println("----------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------------");
-                fifthquestion();
-                fifthquestionanswer();
-                break;
-            }
-            else if(Fourthpart.equals("saloth")) {
-                System.out.println("----------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------------");
-                fifthquestion();
-                fifthquestionanswer();
-                break;
-            }
-            else {
-                System.out.println("----------------------------------------------");
-                System.out.println("That is incorrect, neg 5.");
-                System.out.println("Be ready for the next Question");
-                System.out.println("----------------------------------------------");
-                fifthquestion();
-                fifthquestionanswer();
-                break;
-            }
-        }
-    }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
-    public static void fifthquestion() {
-        try{
-            FileReader reader = new FileReader("ques5.txt");
-            int character;
-            while((character = reader.read()) != -1) {
-                System.out.print((char)character);
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
-    public static void fifthquestionanswer() {
-        while(true) {
-            System.out.println("----------------------------------------------");
-            System.out.println("Now, you have 10 seconds to answer the Question.");
-            Scanner scan = new Scanner(System.in);
-            String Fifthpart = scan.next();
-            if(Fifthpart.equals("Caravaggio")) {
-                System.out.println("--------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("--------------------------------------------");
-                sixthquestion();
-                sixthquestionanswer();
-                break;
-            }
-            else if(Fifthpart.equals("Michelango")) {
-                System.out.println("--------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("--------------------------------------------");
-                sixthquestion();
-                sixthquestionanswer();
-                break;
-            }
-            else if(Fifthpart.equals("Merisi")) {
-                System.out.println("--------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("--------------------------------------------");
-                sixthquestion();
-                sixthquestionanswer();
-                break;
-            }
-            else if(Fifthpart.equals("Michelango Merisi")) {
-                System.out.println("--------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("--------------------------------------------");
-                sixthquestion();
-                sixthquestionanswer();
-                break;
-            }
-            else if(Fifthpart.equals("caravaggio")) {
-                System.out.println("--------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("--------------------------------------------");
-                sixthquestion();
-                sixthquestionanswer();
-                break;
-            }
-            else if(Fifthpart.equals("michelango")) {
-                System.out.println("--------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("--------------------------------------------");
-                sixthquestion();
-                sixthquestionanswer();
-                break;
-            }
-            else if(Fifthpart.equals("michelango merisi")) {
-                System.out.println("--------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("--------------------------------------------");
-                sixthquestion();
-                sixthquestionanswer();
-                break;
-            }
-            else {
-                System.out.println("--------------------------------------------");
-                System.out.println("That is incorrect, neg 5.");
-                System.out.println("Be ready for the next Question");
-                System.out.println("--------------------------------------------");
-                sixthquestion();
-                sixthquestionanswer();
-                break;
-            }
-        }
-    }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
-    public static void sixthquestion() {
-        try{
-            FileReader reader = new FileReader("ques6.txt");
-            int character;
-            while((character = reader.read()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
@@ -501,19 +204,269 @@ public class Javabowl {
         }
     }
 
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+    public static void thirdquestionanswer() {
+        while (true) {
+            System.out.println("                                               ");
+            System.out.println("-----------------------------------------------");
+            System.out.println("Now, you have 10 seconds to answer the Question.");
+            Scanner scan = new Scanner(System.in);
+            String Thirdpart = scan.nextLine();
+            if (Thirdpart.equals("Farewell to Arms")) {
+                System.out.println("---------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("---------------------------------------");
+                correctanswerinput();
+                fourthquestion();
+                fourthquestionanswer();
+                break;
+            } else if (Thirdpart.equals("farewell to arms")) {
+                System.out.println("----------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------");
+                correctanswerinput();
+                fourthquestion();
+                fourthquestionanswer();
+                break;
+            } else {
+                System.out.println("----------------------------------------");
+                System.out.println("That is incorrect, neg 5.");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------");
+                wronganswerinput();
+                fourthquestion();
+                fourthquestionanswer();
+                break;
+            }
+        }
+    }
+
+    public static void fourthquestion() {
+        try {
+            FileReader reader = new FileReader("ques4.txt");
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void fourthquestionanswer() {
+        while (true) {
+            System.out.println("                                                 ");
+            System.out.println("-------------------------------------------------");
+            System.out.println("Now, you have 10 seconds to answer the Question.");
+            Scanner scan = new Scanner(System.in);
+            String Fourthpart = scan.nextLine();
+            if (Fourthpart.equals("Pol Pot")) {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------");
+                correctanswerinput();
+                fifthquestion();
+                fifthquestionanswer();
+                break;
+            } else if (Fourthpart.equals("Pot")) {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------");
+                correctanswerinput();
+                fifthquestion();
+                fifthquestionanswer();
+                break;
+            } else if (Fourthpart.equals("Saloth Sar")) {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------");
+                correctanswerinput();
+                fifthquestion();
+                fifthquestionanswer();
+                break;
+            } else if (Fourthpart.equals("Saloth")) {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------");
+                correctanswerinput();
+                fifthquestion();
+                fifthquestionanswer();
+                break;
+            } else if (Fourthpart.equals("pot")) {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------");
+                correctanswerinput();
+                fifthquestion();
+                fifthquestionanswer();
+                break;
+            } else if (Fourthpart.equals("pol pot")) {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------");
+                correctanswerinput();
+                fifthquestion();
+                fifthquestionanswer();
+                break;
+            } else if (Fourthpart.equals("saloth sar")) {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------");
+                correctanswerinput();
+                fifthquestion();
+                fifthquestionanswer();
+                break;
+            } else if (Fourthpart.equals("saloth")) {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------");
+                correctanswerinput();
+                fifthquestion();
+                fifthquestionanswer();
+                break;
+            } else {
+                System.out.println("----------------------------------------------");
+                System.out.println("That is incorrect, neg 5.");
+                System.out.println("Be ready for the next Question");
+                System.out.println("----------------------------------------------");
+                wronganswerinput();
+                fifthquestion();
+                fifthquestionanswer();
+                break;
+            }
+        }
+    }
+
+
+    public static void fifthquestion() {
+        try {
+            FileReader reader = new FileReader("ques5.txt");
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void fifthquestionanswer() {
+        while (true) {
+            System.out.println("----------------------------------------------");
+            System.out.println("Now, you have 10 seconds to answer the Question.");
+            Scanner scan = new Scanner(System.in);
+            String Fifthpart = scan.next();
+            if (Fifthpart.equals("Caravaggio")) {
+                System.out.println("--------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------");
+                correctanswerinput();
+                sixthquestion();
+                sixthquestionanswer();
+                break;
+            } else if (Fifthpart.equals("Michelango")) {
+                System.out.println("--------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------");
+                correctanswerinput();
+                sixthquestion();
+                sixthquestionanswer();
+                break;
+            } else if (Fifthpart.equals("Merisi")) {
+                System.out.println("--------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------");
+                correctanswerinput();
+                sixthquestion();
+                sixthquestionanswer();
+                break;
+            } else if (Fifthpart.equals("Michelango Merisi")) {
+                System.out.println("--------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------");
+                correctanswerinput();
+                sixthquestion();
+                sixthquestionanswer();
+                break;
+            } else if (Fifthpart.equals("caravaggio")) {
+                System.out.println("--------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------");
+                correctanswerinput();
+                sixthquestion();
+                sixthquestionanswer();
+                break;
+            } else if (Fifthpart.equals("michelango")) {
+                System.out.println("--------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------");
+                correctanswerinput();
+                sixthquestion();
+                sixthquestionanswer();
+                break;
+            } else if (Fifthpart.equals("michelango merisi")) {
+                System.out.println("--------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------");
+                correctanswerinput();
+                sixthquestion();
+                sixthquestionanswer();
+                break;
+            } else {
+                System.out.println("--------------------------------------------");
+                System.out.println("That is incorrect, neg 5.");
+                System.out.println("Be ready for the next Question");
+                System.out.println("--------------------------------------------");
+                wronganswerinput();
+                sixthquestion();
+                sixthquestionanswer();
+                break;
+            }
+        }
+    }
+
+
+    public static void sixthquestion() {
+        try {
+            FileReader reader = new FileReader("ques6.txt");
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public static void sixthquestionanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                             ");
             System.out.println("---------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
             String Sixthpart = scan.nextLine();
-            if(Sixthpart.equals("United States")) {
+            if (Sixthpart.equals("United States")) {
                 System.out.println("--------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
@@ -521,8 +474,52 @@ public class Javabowl {
                 seventhquestion();
                 seventhquestionanswer();
                 break;
-            }
-            else if(Sixthpart.equals("United States of America")) {
+            } else if (Sixthpart.equals("United States of America")) {
+                System.out.println("-------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-------------------------------------------");
+                correctanswerinput();
+                seventhquestion();
+                seventhquestionanswer();
+                break;
+            } else if (Sixthpart.equals("U.S.")) {
+                System.out.println("-------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-------------------------------------------");
+                correctanswerinput();
+                seventhquestion();
+                seventhquestionanswer();
+                break;
+            } else if (Sixthpart.equals("U.S.A.")) {
+                System.out.println("-------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-------------------------------------------");
+                correctanswerinput();
+                seventhquestion();
+                seventhquestionanswer();
+                break;
+            } else if (Sixthpart.equals("America")) {
+                System.out.println("-------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-------------------------------------------");
+                correctanswerinput();
+                seventhquestion();
+                seventhquestionanswer();
+                break;
+            } else if (Sixthpart.equals("usa")) {
+                System.out.println("-------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Be ready for the next Question");
+                System.out.println("-------------------------------------------");
+                correctanswerinput();
+                seventhquestion();
+                seventhquestionanswer();
+                break;
+            } else if (Sixthpart.equals("america")) {
                 System.out.println("-------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
@@ -530,323 +527,253 @@ public class Javabowl {
                 seventhquestion();
                 seventhquestionanswer();
                 break;
-            }
-            else if(Sixthpart.equals("U.S.")) {
+            } else if (Sixthpart.equals("united states")) {
                 System.out.println("-------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                correctanswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
-            }
-            else if(Sixthpart.equals("U.S.A.")) {
-                System.out.println("-------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("-------------------------------------------"); 
-                seventhquestion();
-                seventhquestionanswer();
-                break;
-            }
-            else if(Sixthpart.equals("America")) {
+            } else if (Sixthpart.equals("united states of america")) {
                 System.out.println("-------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                correctanswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
-            }
-            else if(Sixthpart.equals("usa")) {
-                System.out.println("-------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("-------------------------------------------");
-                seventhquestion();
-                seventhquestionanswer();
-                break;
-            }
-            else if(Sixthpart.equals("america")) {
-                System.out.println("-------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("-------------------------------------------");
-                seventhquestion();
-                seventhquestionanswer();
-                break;
-            }
-            else if(Sixthpart.equals("united states")) {
-                System.out.println("-------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("-------------------------------------------");
-                seventhquestion();
-                seventhquestionanswer();
-                break;
-            }
-            else if(Sixthpart.equals("united states of america")) {
-                System.out.println("-------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Be ready for the next Question");
-                System.out.println("-------------------------------------------");
-                seventhquestion();
-                seventhquestionanswer();
-                break;
-            }
-            else {
+            } else {
                 System.out.println("-------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------");
+                wronganswerinput();
                 seventhquestion();
                 seventhquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void seventhquestion() {
-        try{
+        try {
             FileReader reader = new FileReader("ques7.txt");
-            int character; 
-            while((character = reader.read()) != -1) {
-                System.out.print((char)character);
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void seventhquestionanswer() {
-        while(true){
+        while (true) {
             System.out.println("                                                  ");
             System.out.println("--------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
             String Seventhpart = scan.nextLine();
-            if(Seventhpart.equals("Bread")) {
+            if (Seventhpart.equals("Bread")) {
                 System.out.println("--------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
-            }
-            else if(Seventhpart.equals("Loaves")) {
+            } else if (Seventhpart.equals("Loaves")) {
                 System.out.println("--------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
-            }
-            else if(Seventhpart.equals("Matzah")) {
+            } else if (Seventhpart.equals("Matzah")) {
                 System.out.println("--------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
-            }
-            else if(Seventhpart.equals("Challah")) {
+            } else if (Seventhpart.equals("Challah")) {
                 System.out.println("--------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
-            }
-            else if(Seventhpart.equals("bread")) {
+            } else if (Seventhpart.equals("bread")) {
                 System.out.println("--------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
-            }
-            else if(Seventhpart.equals("loaves")) {
+            } else if (Seventhpart.equals("loaves")) {
                 System.out.println("--------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
-            }
-            else if(Seventhpart.equals("matzah")) {
+            } else if (Seventhpart.equals("matzah")) {
                 System.out.println("--------------------------------------------");
                 System.out.println("That is the correct answer, 10 points");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                correctanswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
-            }
-            else{
+            } else {
                 System.out.println("--------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------");
+                wronganswerinput();
                 eigthquestion();
                 eigthquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
     public static void eigthquestion() {
-        try{
+        try {
             FileReader reader = new FileReader("ques8.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
     public static void eigthquestionanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                  ");
             System.out.println("--------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
             String Eigthpart = scan.nextLine();
-            if(Eigthpart.equals("French")) {
+            if (Eigthpart.equals("French")) {
                 System.out.println("-----------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
-            }
-            else if(Eigthpart.equals("Francais")) {
+            } else if (Eigthpart.equals("Francais")) {
                 System.out.println("-------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("---------------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
-            }
-            else if(Eigthpart.equals("language of france")) {
+            } else if (Eigthpart.equals("language of france")) {
                 System.out.println("----------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
-            }
-            else if(Eigthpart.equals("french")) {
+            } else if (Eigthpart.equals("french")) {
                 System.out.println("-----------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
-            }
-            else if(Eigthpart.equals("francais")) {
+            } else if (Eigthpart.equals("francais")) {
                 System.out.println("------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("------------------------------------------------");
+                correctanswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------------");
+                wronganswerinput();
                 ninthquestion();
                 ninthquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
     public static void ninthquestion() {
-        try{
+        try {
             FileReader reader = new FileReader("ques9.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void ninthquestionanswer() {
-        while(true){
+        while (true) {
             System.out.println("                                                ");
             System.out.println("------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
             String Ninthpart = scan.nextLine();
-            if(Ninthpart.equals("Camillo Golgi")) {
+            if (Ninthpart.equals("Camillo Golgi")) {
                 System.out.println("-----------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------------");
-                tenthquestion(); 
+                correctanswerinput();
+                tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else if(Ninthpart.equals("Golgi stain")) {
+            } else if (Ninthpart.equals("Golgi stain")) {
                 System.out.println("------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else if(Ninthpart.equals("Golgi body")) {
+            } else if (Ninthpart.equals("Golgi body")) {
                 System.out.println("--------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
@@ -854,490 +781,463 @@ public class Javabowl {
                 tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else if(Ninthpart.equals("Golgi apparatus")) {
+            } else if (Ninthpart.equals("Golgi apparatus")) {
                 System.out.println("--------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("---------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else if(Ninthpart.equals("Golgi")) {
+            } else if (Ninthpart.equals("Golgi")) {
                 System.out.println("----------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("----------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else if(Ninthpart.equals("camillo golgi")) {
+            } else if (Ninthpart.equals("camillo golgi")) {
                 System.out.println("----------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else if(Ninthpart.equals("golgi")) {
+            } else if (Ninthpart.equals("golgi")) {
                 System.out.println("------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("------------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else if(Ninthpart.equals("golgi stain")) {
+            } else if (Ninthpart.equals("golgi stain")) {
                 System.out.println("------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-----------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else if(Ninthpart.equals("golgi body")) {
+            } else if (Ninthpart.equals("golgi body")) {
                 System.out.println("------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("------------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else if(Ninthpart.equals("golgi apparatus")) {
+            } else if (Ninthpart.equals("golgi apparatus")) {
                 System.out.println("-------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------------------");
+                correctanswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("------------------------------------------------------");
+                wronganswerinput();
                 tenthquestion();
                 tenthquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void tenthquestion() {
-        try{
+        try {
             FileReader reader = new FileReader("ques10.txt");
             int character;
-            while((character = reader.read ()) != -1)  {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
-    public static void tenthquestionanswer(){
-        while(true) {
+
+
+    public static void tenthquestionanswer() {
+        while (true) {
             System.out.println("                                                              ");
             System.out.println("--------------------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
             String Tenthpart = scan.nextLine();
-            if(Tenthpart.equals("Thor's hammer")) {
+            if (Tenthpart.equals("Thor's hammer")) {
                 System.out.println("---------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("---------------------------------------------------------");
+                correctanswerinput();
                 eleventhquestion();
                 eleventhquestionanswer();
                 break;
-            }
-            else if(Tenthpart.equals("Mjolnier")) {
+            } else if (Tenthpart.equals("Mjolnier")) {
                 System.out.println("---------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------------------");
+                correctanswerinput();
                 eleventhquestion();
                 eleventhquestionanswer();
                 break;
-            }
-            else if(Tenthpart.equals("hammer of thor")) {
+            } else if (Tenthpart.equals("hammer of thor")) {
                 System.out.println("--------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------------------");
+                correctanswerinput();
                 eleventhquestion();
                 eleventhquestionanswer();
                 break;
-            }
-            else if(Tenthpart.equals("Hammer")) {
+            } else if (Tenthpart.equals("Hammer")) {
                 System.out.println("---------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------------------");
+                correctanswerinput();
                 eleventhquestion();
                 eleventhquestionanswer();
                 break;
-            }
-            else if(Tenthpart.equals("Thors hammer")) {
+            } else if (Tenthpart.equals("Thors hammer")) {
                 System.out.println("--------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------------------");
+                correctanswerinput();
                 eleventhquestion();
                 eleventhquestionanswer();
                 break;
-            }
-            else if(Tenthpart.equals("mjolnier")) {
+            } else if (Tenthpart.equals("mjolnier")) {
                 System.out.println("-------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("------------------------------------------------------");
+                correctanswerinput();
                 eleventhquestion();
                 eleventhquestionanswer();
                 break;
-            }
-            else if(Tenthpart.equals("Hammer of Thor")) {
+            } else if (Tenthpart.equals("Hammer of Thor")) {
                 System.out.println("--------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question");
                 System.out.println("-------------------------------------------------------");
+                correctanswerinput();
                 eleventhquestion();
                 eleventhquestionanswer();
                 break;
-            }
-            else{
+            } else {
                 System.out.println("--------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question");
                 System.out.println("--------------------------------------------------------");
+                wronganswerinput();
                 eleventhquestion();
-                eleventhquestionanswer(); 
+                eleventhquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void eleventhquestion() {
-        try{
+        try {
             FileReader reader = new FileReader("ques11.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void eleventhquestionanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                       ");
             System.out.println("-------------------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
             String Eleventhpart = scan.nextLine();
-            if(Eleventhpart.equals("Housing")) { 
+            if (Eleventhpart.equals("Housing")) {
                 System.out.println("-------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("-------------------------------------------------------");
+                correctanswerinput();
                 twelvethquestion();
                 twelvethquestionanswer();
                 break;
-            }
-            else if(Eleventhpart.equals("Urban housing")) {
+            } else if (Eleventhpart.equals("Urban housing")) {
                 System.out.println("--------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("--------------------------------------------------------");
+                correctanswerinput();
                 twelvethquestion();
                 twelvethquestionanswer();
                 break;
-            }
-            else if(Eleventhpart.equals("House and Urban Development")) {
+            } else if (Eleventhpart.equals("House and Urban Development")) {
                 System.out.println("--------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("--------------------------------------------------------");
+                correctanswerinput();
                 twelvethquestion();
                 twelvethquestionanswer();
                 break;
-            }
-            else if(Eleventhpart.equals("Public housing")) {
+            } else if (Eleventhpart.equals("Public housing")) {
                 System.out.println("--------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("--------------------------------------------------------");
+                correctanswerinput();
                 twelvethquestion();
                 twelvethquestionanswer();
                 break;
-            }
-            else if(Eleventhpart.equals("Real Estate")) {
+            } else if (Eleventhpart.equals("Real Estate")) {
                 System.out.println("=--------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("---------------------------------------------------------");
+                correctanswerinput();
                 twelvethquestion();
                 twelvethquestionanswer();
                 break;
-            }
-            else if(Eleventhpart.equals("housing")) {
+            } else if (Eleventhpart.equals("housing")) {
                 System.out.println("---------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("---------------------------------------------------------");
+                correctanswerinput();
                 twelvethquestion();
                 twelvethquestionanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("---------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("----------------------------------------------------------");
+                wronganswerinput();
                 twelvethquestion();
                 twelvethquestionanswer();
                 break;
             }
         }
-    } 
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
-    public static void twelvethquestion () {
-        try{
+    }
+
+
+    public static void twelvethquestion() {
+        try {
             FileReader reader = new FileReader("ques12.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
-    public static void twelvethquestionanswer () {
-        while(true) {
+
+
+    public static void twelvethquestionanswer() {
+        while (true) {
             System.out.println("                                            ");
             System.out.println("--------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             Scanner scan = new Scanner(System.in);
             String TwelvethPart = scan.nextLine();
-            if(TwelvethPart.equals("Japan")) {
+            if (TwelvethPart.equals("Japan")) {
                 System.out.println("--------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("--------------------------------------------------------");
+                correctanswerinput();
                 thirtenthquestion();
                 thirtenthquestionanswer();
                 break;
-            }
-            else if(TwelvethPart.equals("Nihon")) {
+            } else if (TwelvethPart.equals("Nihon")) {
                 System.out.println("---------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("---------------------------------------------------------");
+                correctanswerinput();
                 thirtenthquestion();
                 thirtenthquestionanswer();
                 break;
-            }
-            else if(TwelvethPart.equals("Nippon")) {
+            } else if (TwelvethPart.equals("Nippon")) {
                 System.out.println("----------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("-----------------------------------------------------------");
+                correctanswerinput();
                 thirtenthquestion();
                 thirtenthquestionanswer();
                 break;
-            }
-            else if(TwelvethPart.equals("japan")) {
+            } else if (TwelvethPart.equals("japan")) {
                 System.out.println("----------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("---------------------------------------------------------");
+                correctanswerinput();
                 thirtenthquestion();
                 thirtenthquestionanswer();
                 break;
-            }
-            else if(TwelvethPart.equals("nihon")) {
+            } else if (TwelvethPart.equals("nihon")) {
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("-----------------------------------------------------------");
+                correctanswerinput();
                 thirtenthquestion();
                 thirtenthquestionanswer();
                 break;
-            }
-            else if(TwelvethPart.equals("nippon")) {
+            } else if (TwelvethPart.equals("nippon")) {
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("------------------------------------------------------------");
+                correctanswerinput();
                 thirtenthquestion();
                 thirtenthquestionanswer();
                 break;
-            }
-            else if(TwelvethPart.equals(" ")) {
+            } else if (TwelvethPart.equals(" ")) {
                 System.out.println("------------------------------------------------------------------------------------");
                 System.out.println("That is invalid input and also the wrong answer, so neg 5.");
                 System.out.println("Be ready for the next Question and make sure you don't hit enter with nothing there");
                 System.out.println("------------------------------------------------------------------------------------");
+                wronganswerinput();
                 thirtenthquestion();
                 thirtenthquestionanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("-------------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Be ready for the next Question.");
                 System.out.println("-------------------------------------------------------------");
+                wronganswerinput();
                 thirtenthquestion();
                 thirtenthquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void thirtenthquestion() {
-        try{
+        try {
             FileReader reader = new FileReader("ques13.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void thirtenthquestionanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                                           ");
             System.out.println("---------------------------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question");
             System.out.println("---------------------------------------------------------------------");
             Scanner scan = new Scanner(System.in);
             String ThirtenthPart = scan.nextLine();
-            if(ThirtenthPart.equals("My Fair Lady")) {
+            if (ThirtenthPart.equals("My Fair Lady")) {
                 System.out.println("-----------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-----------------------------------------------------------------");
+                correctanswerinput();
                 fourtenthquestion();
                 fourtenthquestionanswer();
                 break;
-            }
-            else if(ThirtenthPart.equals("my fair lady")) {
+            } else if (ThirtenthPart.equals("my fair lady")) {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("------------------------------------------------------------------");
+                correctanswerinput();
                 fourtenthquestion();
                 fourtenthquestionanswer();
                 break;
-            }
-            else if(ThirtenthPart.equals("")) {
+            } else if (ThirtenthPart.equals("")) {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("That is invalid input, so neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("------------------------------------------------------------------");
+                wronganswerinput();
                 fourtenthquestion();
                 fourtenthquestionanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("------------------------------------------------------------------");
+                wronganswerinput();
                 fourtenthquestion();
                 fourtenthquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void fourtenthquestion() {
-        try{
+        try {
             FileReader reader = new FileReader("ques14.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void fourtenthquestionanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                                      ");
             System.out.println("----------------------------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             System.out.println("----------------------------------------------------------------------");
             Scanner scan = new Scanner(System.in);
             String FourtenthPart = scan.nextLine();
-            if(FourtenthPart.equals("Maugham")) {
+            if (FourtenthPart.equals("Maugham")) {
+                System.out.println("------------------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Now, be ready for the next Question.");
+                System.out.println("------------------------------------------------------------------");
+                correctanswerinput();
+                fifthtenthquestion();
+                fifthtenthquestionanswer();
+                break;
+            } else if (FourtenthPart.equals("Somerset Maugham")) {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
@@ -1345,26 +1245,16 @@ public class Javabowl {
                 fifthtenthquestion();
                 fifthtenthquestionanswer();
                 break;
-            }
-            else if(FourtenthPart.equals("Somerset Maugham")) {
-                System.out.println("------------------------------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Now, be ready for the next Question.");
-                System.out.println("------------------------------------------------------------------");
-                fifthtenthquestion();
-                fifthtenthquestionanswer();
-                break;
-            }
-            else if(FourtenthPart.equals("W. Somerset Maugham")) {
+            } else if (FourtenthPart.equals("W. Somerset Maugham")) {
                 System.out.println("--------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("--------------------------------------------------------------------");
+                correctanswerinput();
                 fifthtenthquestion();
                 fifthtenthquestionanswer();
                 break;
-            }
-            else if(FourtenthPart.equals("maugham")) {
+            } else if (FourtenthPart.equals("maugham")) {
                 System.out.println("--------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
@@ -1372,183 +1262,177 @@ public class Javabowl {
                 fifthtenthquestion();
                 fifthtenthquestionanswer();
                 break;
-            }
-            else if(FourtenthPart.equals("somerset maugham")) {
+            } else if (FourtenthPart.equals("somerset maugham")) {
                 System.out.println("--------------------------------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!"); 
+                System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("--------------------------------------------------------------------");
+                correctanswerinput();
                 fifthtenthquestion();
                 fifthtenthquestionanswer();
                 break;
-            }
-            else if(FourtenthPart.equals("w. somerset maugham")) {
+            } else if (FourtenthPart.equals("w. somerset maugham")) {
                 System.out.println("--------------------------------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!"); 
+                System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("--------------------------------------------------------------------");
+                correctanswerinput();
                 fifthtenthquestion();
                 fifthtenthquestionanswer();
                 break;
-            }
-            else if(FourtenthPart.equals("")) {
+            } else if (FourtenthPart.equals("")) {
                 System.out.println("--------------------------------------------------------------------");
                 System.out.println("That is invalid input, so neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("--------------------------------------------------------------------");
+                wronganswerinput();
                 fifthtenthquestion();
                 fifthtenthquestionanswer();
                 break;
-            }
-            else { 
+            } else {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                wronganswerinput();
                 fifthtenthquestion();
                 fifthtenthquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void fifthtenthquestion() {
         try {
             FileReader reader = new FileReader("ques15.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void fifthtenthquestionanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                                         ");
             System.out.println("-------------------------------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             System.out.println("-------------------------------------------------------------------------");
             Scanner scan = new Scanner(System.in);
             String FifthtenthPart = scan.nextLine();
-            if(FifthtenthPart.equals("Pampas")) {
+            if (FifthtenthPart.equals("Pampas")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                correctanswerinput();
                 sixthtenthquestion();
                 sixthtenthquestionanswer();
                 break;
-            }
-            else if(FifthtenthPart.equals("The Pampas")) {
+            } else if (FifthtenthPart.equals("The Pampas")) {
                 System.out.println("---------------------------------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!"); 
+                System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                correctanswerinput();
                 sixthtenthquestion();
                 sixthtenthquestionanswer();
                 break;
-            } 
-            else if(FifthtenthPart.equals("Pampa")) {
+            } else if (FifthtenthPart.equals("Pampa")) {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                correctanswerinput();
                 sixthtenthquestion();
                 sixthtenthquestionanswer();
-            }
-            else if(FifthtenthPart.equals("pampas")) {
+            } else if (FifthtenthPart.equals("pampas")) {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                correctanswerinput();
                 sixthtenthquestion();
                 sixthtenthquestionanswer();
                 break;
-            }
-            else if(FifthtenthPart.equals("the pampas")) {
+            } else if (FifthtenthPart.equals("the pampas")) {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                correctanswerinput();
                 sixthtenthquestion();
                 sixthtenthquestionanswer();
                 break;
-            }
-            else if(FifthtenthPart.equals("pampa")) {
+            } else if (FifthtenthPart.equals("pampa")) {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                correctanswerinput();
                 sixthtenthquestion();
                 sixthtenthquestionanswer();
                 break;
-            }
-            else if(FifthtenthPart.equals("")) {
+            } else if (FifthtenthPart.equals("")) {
                 System.out.println("----------------------------------------------------------------------");
-                System.out.println("That is invalid input, neg 5."); 
+                System.out.println("That is invalid input, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                wronganswerinput();
                 sixthtenthquestion();
                 sixthtenthquestionanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                wronganswerinput();
                 sixthtenthquestion();
                 sixthtenthquestionanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void sixthtenthquestion() {
-        try{ 
+        try {
             FileReader reader = new FileReader("ques16.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void sixthtenthquestionanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                                                ");
             System.out.println("---------------------------------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             System.out.println("---------------------------------------------------------------------------");
             Scanner scan = new Scanner(System.in);
             String SixthtenthPart = scan.nextLine();
-            if(SixthtenthPart.equals("Blue")) {
+            if (SixthtenthPart.equals("Blue")) {
+                System.out.println("-----------------------------------------------------------------------");
+                System.out.println("That is the correct answer, 10 points!");
+                System.out.println("Now, be ready for the next Question.");
+                System.out.println("-----------------------------------------------------------------------");
+                correctanswerinput();
+                questionseventeen();
+                questionseventeenanswer();
+                break;
+            } else if (SixthtenthPart.equals("Cobalt Blue")) {
                 System.out.println("-----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
@@ -1556,116 +1440,99 @@ public class Javabowl {
                 questionseventeen();
                 questionseventeenanswer();
                 break;
-            }
-            else if(SixthtenthPart.equals("Cobalt Blue")) {
+            } else if (SixthtenthPart.equals("Prussian Blue")) {
                 System.out.println("-----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-----------------------------------------------------------------------");
+                correctanswerinput();
                 questionseventeen();
                 questionseventeenanswer();
                 break;
-            }
-            else if(SixthtenthPart.equals("Prussian Blue")) {
+            } else if (SixthtenthPart.equals("Bromthyol Blue")) {
                 System.out.println("-----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-----------------------------------------------------------------------");
+                correctanswerinput();
                 questionseventeen();
                 questionseventeenanswer();
                 break;
-            }
-            else if(SixthtenthPart.equals("Bromthyol Blue")) {
+            } else if (SixthtenthPart.equals("blue")) {
                 System.out.println("-----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-----------------------------------------------------------------------");
+                correctanswerinput();
                 questionseventeen();
                 questionseventeenanswer();
                 break;
-            }
-            else if(SixthtenthPart.equals("blue")) {
+            } else if (SixthtenthPart.equals("cobalt blue")) {
                 System.out.println("-----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-----------------------------------------------------------------------");
+                correctanswerinput();
                 questionseventeen();
                 questionseventeenanswer();
                 break;
-            }
-            else if(SixthtenthPart.equals("cobalt blue")) {
+            } else if (SixthtenthPart.equals("prussian blue")) {
                 System.out.println("-----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-----------------------------------------------------------------------");
+                correctanswerinput();
                 questionseventeen();
                 questionseventeenanswer();
                 break;
-            }
-            else if(SixthtenthPart.equals("prussian blue")) {
-                System.out.println("-----------------------------------------------------------------------");
-                System.out.println("That is the correct answer, 10 points!");
-                System.out.println("Now, be ready for the next Question.");
-                System.out.println("-----------------------------------------------------------------------");
-                questionseventeen();
-                questionseventeenanswer();
-                break;
-            }
-            else if(SixthtenthPart.equals("bromthyol blue")) {
+            } else if (SixthtenthPart.equals("bromthyol blue")) {
                 System.out.println("------------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-------------------------------------------------------------------------");
+                correctanswerinput();
                 questionseventeen();
                 questionseventeenanswer();
                 break;
-            }
-            else if(SixthtenthPart.equals("")) {
+            } else if (SixthtenthPart.equals("")) {
                 System.out.println("-------------------------------------------------------------------------");
                 System.out.println("That is invalid input, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-------------------------------------------------------------------------");
+                wronganswerinput();
                 questionseventeen();
                 questionseventeenanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("-------------------------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-------------------------------------------------------------------------");
+                wronganswerinput();
                 questionseventeen();
                 questionseventeenanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void questionseventeen() {
-        try{ 
+        try {
             FileReader reader = new FileReader("ques17.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void questionseventeenanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                                              ");
             System.out.println("-----------------------------------------------------------------------");
             System.out.println("On this Question, a description is acceptable.");
@@ -1673,186 +1540,175 @@ public class Javabowl {
             System.out.println("-----------------------------------------------------------------------");
             Scanner scan = new Scanner(System.in);
             String PartSeventeen = scan.nextLine();
-            if(PartSeventeen.equals("Being Headless")) {
+            if (PartSeventeen.equals("Being Headless")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("--------------------------------------------------------------------");
+                correctanswerinput();
                 questioneighteen();
                 questioneighteenanswer();
                 break;
-            }
-            else if(PartSeventeen.equals("Having No Head")) {
+            } else if (PartSeventeen.equals("Having No Head")) {
                 System.out.println("-------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-------------------------------------------------------------------");
+                correctanswerinput();
                 questioneighteen();
                 questioneighteenanswer();
                 break;
-            }
-            else if(PartSeventeen.equals("Beheaded")) {
+            } else if (PartSeventeen.equals("Beheaded")) {
                 System.out.println("-------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("-------------------------------------------------------------------");
+                correctanswerinput();
                 questioneighteen();
                 questioneighteenanswer();
                 break;
-            }
-            else if(PartSeventeen.equals("beheaded")) {
+            } else if (PartSeventeen.equals("beheaded")) {
                 System.out.println("--------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("--------------------------------------------------------------------");
+                correctanswerinput();
                 questioneighteen();
                 questioneighteenanswer();
                 break;
-            }
-            else if(PartSeventeen.equals("being headless")) {
+            } else if (PartSeventeen.equals("being headless")) {
                 System.out.println("--------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("--------------------------------------------------------------------");
+                correctanswerinput();
                 questioneighteen();
                 questioneighteenanswer();
                 break;
-            }
-            else if(PartSeventeen.equals("dead")) {
+            } else if (PartSeventeen.equals("dead")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("Due to the type of answer you gave, I shall prompt you.");
                 System.out.println("You will have 5 seconds to answer the prompt.");
                 System.out.println("---------------------------------------------------------------------");
-            }
-            else if(PartSeventeen.equals("having no head")) {
+            } else if (PartSeventeen.equals("having no head")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                wronganswerinput();
                 questioneighteen();
                 questioneighteenanswer();
                 break;
-            }
-            else if(PartSeventeen.equals("")) {
+            } else if (PartSeventeen.equals("")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is invalid input, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                wronganswerinput();
                 questioneighteen();
                 questioneighteenanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                wronganswerinput();
                 questioneighteen();
                 questioneighteenanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void questioneighteen() {
-        try{
+        try {
             FileReader reader = new FileReader("ques18.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void questioneighteenanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                                           ");
             System.out.println("---------------------------------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             System.out.println("---------------------------------------------------------------------------");
             Scanner scan = new Scanner(System.in);
             String PartEighteen = scan.nextLine();
-            if(PartEighteen.equals("Scotland")) {
+            if (PartEighteen.equals("Scotland")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                correctanswerinput();
                 questionnineteen();
                 questionnineteenanswer();
                 break;
-            }
-            else if(PartEighteen.equals("Alba")) {
+            } else if (PartEighteen.equals("Alba")) {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                correctanswerinput();
                 questionnineteen();
                 questionnineteenanswer();
                 break;
-            }
-            else if(PartEighteen.equals("scotland")) {
+            } else if (PartEighteen.equals("scotland")) {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                correctanswerinput();
                 questionnineteen();
                 questionnineteenanswer();
                 break;
-            }
-            else if(PartEighteen.equals("alba")) {
+            } else if (PartEighteen.equals("alba")) {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                correctanswerinput();
                 questionnineteen();
                 questionnineteenanswer();
                 break;
-            }
-            else if(PartEighteen.equals("")) {
+            } else if (PartEighteen.equals("")) {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is invalid input, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                wronganswerinput();
                 questionnineteen();
                 questionnineteenanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("----------------------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("----------------------------------------------------------------------");
+                wronganswerinput();
                 questionnineteen();
                 questionnineteenanswer();
                 break;
             }
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void questionnineteen() {
-        try{
+        try {
             FileReader reader = new FileReader("ques19.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
         } catch (IOException e) {
@@ -1861,63 +1717,65 @@ public class Javabowl {
     }
 
     public static void questionnineteenanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                                                ");
             System.out.println("-------------------------------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             System.out.println("-------------------------------------------------------------------------");
             Scanner scan = new Scanner(System.in);
             String PartNineteen = scan.nextLine();
-            if(PartNineteen.equals("Aquifier")) {
+            if (PartNineteen.equals("Aquifier")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                correctanswerinput();
                 questiontwenty();
                 questiontwentyanswer();
+
                 break;
-            }
-            else if(PartNineteen.equals("Aquifiers")) {
+            } else if (PartNineteen.equals("Aquifiers")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                correctanswerinput();
                 questiontwenty();
                 questiontwentyanswer();
                 break;
-            }
-            else if(PartNineteen.equals("aquifier")) {
+            } else if (PartNineteen.equals("aquifier")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                correctanswerinput();
                 questiontwenty();
                 questiontwentyanswer();
                 break;
-            }
-            else if(PartNineteen.equals("aquifiers")) {
+            } else if (PartNineteen.equals("aquifiers")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                correctanswerinput();
                 questiontwenty();
                 questiontwentyanswer();
                 break;
-            }
-            else if(PartNineteen.equals("")) {
+            } else if (PartNineteen.equals("")) {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is invalid input, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                wronganswerinput();
                 questiontwenty();
                 questiontwentyanswer();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("---------------------------------------------------------------------");
+                wronganswerinput();
                 questiontwenty();
                 questiontwentyanswer();
                 break;
@@ -1925,66 +1783,87 @@ public class Javabowl {
 
         }
     }
-    
-    /*
-     * The First Parameter of this method is that it goes and finds the file that it has to read with the text.
-     * The Second Parameter of this method is reading the .txt file for characters and gets them ready to print. 
-     * The Return Value of this method is the printed text file in the terminal. 
-     */
+
+
     public static void questiontwenty() {
-        try{
+        try {
             FileReader reader = new FileReader("ques20.txt");
             int character;
-            while((character = reader.read ()) != -1) {
-                System.out.print((char)character);
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
             reader.close();
-        } catch(IOException e) {
-            e.printStackTrace(); 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-    
-     /*
-     * The First Parameter of this method is it printing out how long the player should give themselves to answer the Question.
-     * The Second Parameter of this method is accepting user input for the acceptable answers within the answer key.
-     * The Return value of this method is saying whether or not the player has put in the correct answer and then tells them how many points to award themselves.
-     */
+
+
     public static void questiontwentyanswer() {
-        while(true) {
+        while (true) {
             System.out.println("                                                                      ");
             System.out.println("-------------------------------------------------------------------------");
             System.out.println("Now, you have 10 seconds to answer the Question.");
             System.out.println("-------------------------------------------------------------------------");
             Scanner scan = new Scanner(System.in);
             String PartTwenty = scan.nextLine();
-            if(PartTwenty.equals("Stravinsky")) {
+            if (PartTwenty.equals("Stravinsky")) {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("------------------------------------------------------------------");
+                correctanswerinput();
+                FinalScoreOutput();
                 break;
-            }
-            else if(PartTwenty.equals("stravinsky")) {
+            } else if (PartTwenty.equals("stravinsky")) {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("That is the correct answer, 10 points!");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("------------------------------------------------------------------");
+                correctanswerinput();
+                FinalScoreOutput();
                 break;
-            }
-            else if(PartTwenty.equals("")) {
+            } else if (PartTwenty.equals("")) {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("That is invalid input, neg 5.");
                 System.out.println("Now, be ready for the next Question.");
                 System.out.println("------------------------------------------------------------------");
+                wronganswerinput();
+                FinalScoreOutput();
                 break;
-            }
-            else {
+            } else {
                 System.out.println("-------------------------------------------------------------------");
                 System.out.println("That is incorrect, neg 5.");
-                System.out.println("Now, be ready for the next Question.");
+                System.out.println("This is also the end of the Set, so good bye.");
                 System.out.println("-------------------------------------------------------------------");
+                wronganswerinput();
+                FinalScoreOutput();
                 break;
             }
         }
     }
+
+    private static void wronganswerinput() {
+        totalscore = totalscore - WrongAnswer;
+    }
+
+    private static void correctanswerinput() {
+        totalscore = totalscore + Correctanswer;
+    }
+
+    private static void FinalScoreOutput() {
+        System.out.println("Your total score is:" + " " + totalscore);
+    }
+
+    abstract class QuestionTimer extends TimerTask {
+
+        public void timerparameters() {
+
+        }
+
+        public void PromptTimer() {
+
+        }
+    }
 }
+
