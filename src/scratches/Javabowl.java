@@ -4,10 +4,14 @@ import java.util.Scanner;
 import java.io.*;
 import java.util.TimerTask;
 
+
+
+
 public class Javabowl {
     public static int Correctanswer = 10;
     public static int WrongAnswer = 5;
     public static int totalscore;
+    protected static Javabowl obj;
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -1853,17 +1857,6 @@ public class Javabowl {
 
     private static void FinalScoreOutput() {
         System.out.println("Your total score is:" + " " + totalscore);
-    }
-
-    abstract class QuestionTimer extends TimerTask {
-
-        public void timerparameters() {
-
-        }
-
-        public void PromptTimer() {
-
-        }
     }
 }
 
