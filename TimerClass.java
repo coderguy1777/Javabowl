@@ -1,4 +1,4 @@
-package scratches;
+package sample;
 import java.util.TimerTask;
 import java.util.Timer;
 import java.io.*;

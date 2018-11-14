@@ -1,4 +1,4 @@
-package scratches;
+package sample;
 
 import java.util.Scanner;
 import java.io.*;
