@@ -55,6 +55,12 @@ public class Main extends Application {
         level2difficulty.setTranslateY(-120);
         level2difficulty.setTranslateX(60);
 
+        Button level3difficulty = new Button("Hard Mode");
+        setDiffculty.getChildren().add(level3difficulty);
+        level3difficulty.setTranslateY(-80);
+        level3difficulty.setTranslateX(-60);
+        level3difficulty.setFont(new Font("Arial", 14));
+
         Label aboutsectionheader = new Label("About Javabowl:");
         aboutSection.getChildren().add(aboutsectionheader);
         aboutsectionheader.setTranslateY(-160);
