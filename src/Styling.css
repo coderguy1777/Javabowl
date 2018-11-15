@@ -4,4 +4,6 @@
 
 .button {
     -fx-background-color: #008080;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 20px;
 }
