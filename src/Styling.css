@@ -1,0 +1,7 @@
+.root {
+    -fx-background-color: linear-gradient(lightcoral,maroon);
+}
+
+.button {
+    -fx-background-color: #008080;
+}
