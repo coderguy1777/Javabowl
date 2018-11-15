@@ -1,12 +1,10 @@
-package sample;
+package MainSourceforJavabowl;
 
 import java.util.Scanner;
 import java.io.*;
-import java.util.TimerTask;
 
 
-
-
+@SuppressWarnings("ALL")
 public class Javabowl {
     public static int Correctanswer = 10;
     public static int WrongAnswer = 5;
@@ -1859,4 +1857,3 @@ public class Javabowl {
         System.out.println("Your total score is:" + " " + totalscore);
     }
 }
-
