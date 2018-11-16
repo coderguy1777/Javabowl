@@ -1,4 +1,4 @@
-package MainSourceforJavabowl;
+package MainSourceForJavabowl;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -74,7 +74,7 @@ public class Main extends Application {
         main.getChildren().add(button3);
         button3.setTranslateX(10);
         button3.setTranslateY(20);
-        button3.setFont(new Font("Arial", 10));
+        button3.setFont(new Font("Arial", 9));
 
         //Header for Difficulty Menu Selection.
         Label HeaderSetSelection = new Label("Please Select a Set difficulty.");
@@ -85,7 +85,7 @@ public class Main extends Application {
         //Header for the Other Mode Selection Menu.
         Label OtherModeLabel = new Label("Other Modes Available to Play");
         OtherModeSets.getChildren().add(OtherModeLabel);
-        OtherModeLabel.setTranslateY(-200);
+        OtherModeLabel.setTranslateY(-160);
         OtherModeLabel.setTranslateX(5);
         OtherModeLabel.setFont(new Font("Arial", 20));
 
@@ -97,15 +97,27 @@ public class Main extends Application {
 
         Button speedmode = new Button("Speed Mode");
         OtherModeSets.getChildren().add(speedmode);
-        speedmode.setTranslateY(-170);
-        speedmode.setTranslateX(-46);
-        speedmode.setFont(new Font("Arial", 12));
+        speedmode.setTranslateY(-130);
+        speedmode.setTranslateX(-50);
+        speedmode.setFont(new Font("Arial", 11));
+
+        Button randommode = new Button("Random Mode");
+        OtherModeSets.getChildren().add(randommode);
+        randommode.setTranslateX(-50);
+        randommode.setTranslateY(-100);
+        randommode.setFont(new Font("Arial",10));
 
         Button computermode = new Button("Play an AI");
         OtherModeSets.getChildren().add(computermode);
-        computermode.setTranslateY(-170);
-        computermode.setTranslateX(46);
+        computermode.setTranslateY(-130);
+        computermode.setTranslateX(50);
         computermode.setFont(new Font("Arial", 12));
+
+        Button Teams = new Button("Teams");
+        OtherModeSets.getChildren().add(Teams);
+        Teams.setTranslateY(-100);
+        Teams.setTranslateX(50);
+        Teams.setFont(new Font("Arial", 12));
 
         //Buttons for difficulty of the set selection for the player.
         Button level1difficulty = new Button("Easy");
@@ -214,6 +226,7 @@ public class Main extends Application {
         backbutton4.setOnAction(event -> primaryStage.setScene(scene));
         backbutton5.setOnAction(event -> primaryStage.setScene(scene));
         button2.setOnAction(event -> Platform.exit());
+        nonmainmenubackbutton.setOnAction(event -> primaryStage.setScene(playertype));
 
         scene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         difficultyscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
