@@ -1,9 +1,10 @@
 .root {
-    -fx-background-color: linear-gradient(lightcoral,maroon);
+    -fx-background-color: #280000;
 }
 
 .button {
-    -fx-background-color: #008080;
+    -fx-background-color: #006464;
     -fx-pref-width: 90px;
     -fx-pref-height: 20px;
+    -fx-font-fill: #290d06;
 }

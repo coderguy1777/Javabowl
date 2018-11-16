@@ -24,17 +24,18 @@ public class Main extends Application {
         StackPane aboutSection = new StackPane();
         StackPane TypeofPlayer = new StackPane();
         StackPane OtherModeSets = new StackPane();
+        StackPane MainSettings = new StackPane();
 
         //Buttons for Main Menu returning, etc.
         primaryStage.setTitle("Javabowl");
         Button button = new Button("Play Now");
-        button.setTranslateX(-40);
+        button.setTranslateX(-60);
         button.setTranslateY(-60);
         button.setFont(new Font("Arial", 15));
         main.getChildren().add(button);
 
         Button settings = new Button("Settings");
-        settings.setTranslateX(-40);
+        settings.setTranslateX(-60);
         settings.setTranslateY(-20);
         settings.setFont(new Font("Arial", 15));
         main.getChildren().add(settings);
@@ -52,96 +53,116 @@ public class Main extends Application {
         backbutton3.setTranslateY(170);
         backbutton.setFont(new Font("Arial", 12));
 
-        Label label = new Label("Press Either Button to Proceed.");
+        Button backbutton7 = new Button("Main Menu");
+        TypeofPlayer.getChildren().add(backbutton7);
+        backbutton7.setTranslateX(-335);
+        backbutton7.setTranslateY(170);
+        backbutton7.setFont(new Font("Arial", 12));
+
+        Label label = new Label("Press any Button to Proceed.");
         main.getChildren().add(label);
         label.setTranslateY(-100);
-        label.setTranslateX(15);
+        label.setTranslateX(-3);
         label.setFont(new Font("Arial", 20));
 
         Button button2 = new Button("Exit Here");
         main.getChildren().add(button2);
-        button2.setTranslateX(60);
+        button2.setTranslateX(40);
         button2.setTranslateY(-60);
         button2.setFont(new Font("Arial", 15));
 
         Button othermodes = new Button("Modes");
         main.getChildren().add(othermodes);
-        othermodes.setTranslateX(60);
+        othermodes.setTranslateX(40);
         othermodes.setTranslateY(-20);
         othermodes.setFont(new Font("Arial", 15));
 
         Button button3 = new Button("About Javabowl.");
         main.getChildren().add(button3);
-        button3.setTranslateX(10);
+        button3.setTranslateX(-10);
         button3.setTranslateY(20);
         button3.setFont(new Font("Arial", 9));
 
         //Header for Difficulty Menu Selection.
         Label HeaderSetSelection = new Label("Please Select a Set difficulty.");
         setDiffculty.getChildren().add(HeaderSetSelection);
-        HeaderSetSelection.setTranslateY(-160);
+        HeaderSetSelection.setTranslateY(-100);
+        HeaderSetSelection.setTranslateX(-3);
         HeaderSetSelection.setFont(new Font("Arial", 20));
 
         //Header for the Other Mode Selection Menu.
         Label OtherModeLabel = new Label("Other Modes Available to Play");
         OtherModeSets.getChildren().add(OtherModeLabel);
-        OtherModeLabel.setTranslateY(-160);
+        OtherModeLabel.setTranslateY(-80);
         OtherModeLabel.setTranslateX(5);
         OtherModeLabel.setFont(new Font("Arial", 20));
+
+        //Label for the Settings.
+        Label settingsheader = new Label("Settings");
+        MainSettings.getChildren().add(settingsheader);
+        settingsheader.setTranslateY(-90);
+        settingsheader.setTranslateX(10);
+        settingsheader.setFont(new Font("Arial", 20));
 
         Button backbutton4 = new Button("Main Menu");
         OtherModeSets.getChildren().add(backbutton4);
         backbutton4.setTranslateX(-335);
         backbutton4.setTranslateY(170);
-        backbutton.setFont(new Font("Arial", 12));
+        backbutton4.setFont(new Font("Arial", 12));
+
+        Button backbutton5 = new Button("Main Menu");
+        MainSettings.getChildren().add(backbutton5);
+        backbutton5.setTranslateX(-335);
+        backbutton5.setTranslateY(170);
+        backbutton5.setFont(new Font("Arial", 12));
 
         Button speedmode = new Button("Speed Mode");
         OtherModeSets.getChildren().add(speedmode);
-        speedmode.setTranslateY(-130);
+        speedmode.setTranslateY(-50);
         speedmode.setTranslateX(-50);
         speedmode.setFont(new Font("Arial", 11));
 
         Button randommode = new Button("Random Mode");
         OtherModeSets.getChildren().add(randommode);
         randommode.setTranslateX(-50);
-        randommode.setTranslateY(-100);
+        randommode.setTranslateY(-20);
         randommode.setFont(new Font("Arial",10));
 
         Button computermode = new Button("Play an AI");
         OtherModeSets.getChildren().add(computermode);
-        computermode.setTranslateY(-130);
+        computermode.setTranslateY(-20);
         computermode.setTranslateX(50);
         computermode.setFont(new Font("Arial", 12));
 
         Button Teams = new Button("Teams");
         OtherModeSets.getChildren().add(Teams);
-        Teams.setTranslateY(-100);
+        Teams.setTranslateY(-50);
         Teams.setTranslateX(50);
         Teams.setFont(new Font("Arial", 12));
 
         //Buttons for difficulty of the set selection for the player.
         Button level1difficulty = new Button("Easy");
         setDiffculty.getChildren().add(level1difficulty);
-        level1difficulty.setTranslateY(-120);
+        level1difficulty.setTranslateY(-60);
         level1difficulty.setTranslateX(-60);
         level1difficulty.setFont(new Font("Arial", 14));
 
         Button level2difficulty = new Button("Medium");
         setDiffculty.getChildren().add(level2difficulty);
-        level2difficulty.setTranslateY(-120);
-        level2difficulty.setTranslateX(60);
+        level2difficulty.setTranslateY(-60);
+        level2difficulty.setTranslateX(40);
         level2difficulty.setFont(new Font("Arial", 14));
 
         Button level3difficulty = new Button("Hard");
         setDiffculty.getChildren().add(level3difficulty);
-        level3difficulty.setTranslateY(-80);
+        level3difficulty.setTranslateY(-20);
         level3difficulty.setTranslateX(-60);
         level3difficulty.setFont(new Font("Arial", 14));
 
         Button level4difficulty = new Button("Ultra");
         setDiffculty.getChildren().add(level4difficulty);
-        level4difficulty.setTranslateY(-80);
-        level4difficulty.setTranslateX(60);
+        level4difficulty.setTranslateY(-20);
+        level4difficulty.setTranslateX(40);
         level4difficulty.setFont(new Font("Arial", 14));
 
         //Header for the Player type section
@@ -182,11 +203,17 @@ public class Main extends Application {
         playertype5.setTranslateY(20);
         playertype5.setFont(new Font("Arial", 15));
 
-        Button backbutton5 = new Button("Main Menu");
-        TypeofPlayer.getChildren().add(backbutton5);
-        backbutton5.setTranslateX(-335);
-        backbutton5.setTranslateY(170);
-        backbutton5.setFont(new Font("Arial", 12));
+        Button playertype6 = new Button("Trash");
+        TypeofPlayer.getChildren().add(playertype6);
+        playertype6.setTranslateX(40);
+        playertype6.setTranslateY(20);
+        playertype6.setFont(new Font("Arial",15));
+
+        Button backbutton6 = new Button("Main Menu");
+        MainSettings.getChildren().add(backbutton6);
+        backbutton6.setTranslateX(-335);
+        backbutton6.setTranslateY(170);
+        backbutton6.setFont(new Font("Arial", 12));
 
         Button nonmainmenubackbutton = new Button("Go Back");
         setDiffculty.getChildren().add(nonmainmenubackbutton);
@@ -197,12 +224,16 @@ public class Main extends Application {
         //Labels for the About Section
         Label aboutsectionheader = new Label("About Javabowl:");
         aboutSection.getChildren().add(aboutsectionheader);
-        aboutsectionheader.setTranslateY(-160);
+        aboutsectionheader.setTranslateY(-90);
+        aboutsectionheader.setTranslateX(10);
         aboutsectionheader.setFont(new Font("Arial", 20));
 
+
+        //About Section Details
         Label aboutsectiondetails = new Label(aboutwords);
         aboutSection.getChildren().add(aboutsectiondetails);
-        aboutsectiondetails.setTranslateY(-100);
+        aboutsectiondetails.setTranslateY(-30);
+        aboutsectiondetails.setTranslateX(20);
         aboutsectiondetails.setFont(new Font("Arial", 15));
 
         //Scenes used for Button Clicks and storing Buttons
@@ -211,6 +242,7 @@ public class Main extends Application {
         Scene aboutsectionscene = new Scene(aboutSection, 800, 400);
         Scene playertype = new Scene(TypeofPlayer, 800, 400);
         Scene othermodemenu = new Scene(OtherModeSets, 800,400);
+        Scene settingsarea = new Scene(MainSettings, 800, 400);
 
         //Button lambda Clickers for Button Events
         button.setOnAction(event -> primaryStage.setScene(playertype));
@@ -227,12 +259,17 @@ public class Main extends Application {
         backbutton5.setOnAction(event -> primaryStage.setScene(scene));
         button2.setOnAction(event -> Platform.exit());
         nonmainmenubackbutton.setOnAction(event -> primaryStage.setScene(playertype));
+        settings.setOnAction(event -> primaryStage.setScene(settingsarea));
+        backbutton6.setOnAction(event -> primaryStage.setScene(scene));
+        backbutton7.setOnAction(event -> primaryStage.setScene(scene));
+        playertype6.setOnAction(event -> primaryStage.setScene(difficultyscene));
 
         scene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         difficultyscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         aboutsectionscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         playertype.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         othermodemenu.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+        settingsarea.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.show();
