@@ -1,4 +1,4 @@
-package MainSourceForJavabowl;
+package MainSourceforJavabowl;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -8,9 +8,13 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
+import javafx.scene.control.Slider;
+
+import java.awt.*;
 
 public class Main extends Application {
 
+    final static Color textColor = Color.WHITE;
     private static final String aboutwords =
             "Javabowl is a Javafx application written entirely in Java, developed by Jordan Hill \n" +
                     "and was made for the purpose of being used to practice for quizbowl tournaments, by \n" +
@@ -100,9 +104,28 @@ public class Main extends Application {
         //Label for the Settings.
         Label settingsheader = new Label("Settings");
         MainSettings.getChildren().add(settingsheader);
-        settingsheader.setTranslateY(-90);
-        settingsheader.setTranslateX(10);
+        settingsheader.setTranslateY(-150);
+        settingsheader.setTranslateX(3);
         settingsheader.setFont(new Font("Arial", 20));
+
+        Label amountofmaxquestions = new Label("Maximum Question Amount");
+        MainSettings.getChildren().add(amountofmaxquestions);
+        amountofmaxquestions.setTranslateY(-80);
+        amountofmaxquestions.setTranslateX(-140);
+        amountofmaxquestions.setFont(new Font("Arial", 13));
+
+        Slider maxquestions = new Slider();
+        maxquestions.setMin(0);
+        maxquestions.setMax(22);
+        maxquestions.setValue(0);
+        maxquestions.setShowTickLabels(true);
+        maxquestions.setShowTickMarks(true);
+        maxquestions.setBlockIncrement(200);
+        MainSettings.getChildren().add(maxquestions);
+        maxquestions.getStyleClass().add("DialStyleSheet.css");
+        maxquestions.setTranslateX(-205);
+        maxquestions.setTranslateY(-45);
+        maxquestions.setMaxWidth(250);
 
         Button backbutton4 = new Button("Main Menu");
         OtherModeSets.getChildren().add(backbutton4);
@@ -220,7 +243,10 @@ public class Main extends Application {
         nonmainmenubackbutton.setTranslateX(-230);
         nonmainmenubackbutton.setTranslateY(170);
         nonmainmenubackbutton.setFont(new Font("Arial", 12));
+        nonmainmenubackbutton.setId("test");
+        nonmainmenubackbutton.getId();
 
+        System.out.println(nonmainmenubackbutton.getId());
         //Labels for the About Section
         Label aboutsectionheader = new Label("About Javabowl:");
         aboutSection.getChildren().add(aboutsectionheader);
@@ -270,6 +296,7 @@ public class Main extends Application {
         playertype.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         othermodemenu.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         settingsarea.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+        settingsarea.getStylesheets().add(getClass().getResource("LabelStyleSheet.css").toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.show();

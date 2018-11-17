@@ -1,10 +1,8 @@
 .root {
-    -fx-background-color: #51040f;
+    -fx-background-color: #697b9d;
 }
 
-
-
 .label {
-    -fx-background-color: #2f811e;
     -fx-text-fill: #550229;
+    -fx-font-weight: bold;
 }
