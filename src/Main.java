@@ -4,17 +4,21 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Slider;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.*;
 
 public class Main extends Application {
 
     final static Color textColor = Color.WHITE;
+    private String userName;
     private static final String aboutwords =
             "Javabowl is a Javafx application written entirely in Java, developed by Jordan Hill \n" +
                     "and was made for the purpose of being used to practice for quizbowl tournaments, by \n" +
@@ -29,6 +33,7 @@ public class Main extends Application {
         StackPane TypeofPlayer = new StackPane();
         StackPane OtherModeSets = new StackPane();
         StackPane MainSettings = new StackPane();
+        StackPane playername = new StackPane();
 
         //Buttons for Main Menu returning, etc.
         primaryStage.setTitle("Javabowl");
@@ -108,10 +113,9 @@ public class Main extends Application {
         settingsheader.setTranslateX(3);
         settingsheader.setFont(new Font("Arial", 20));
 
-        Label amountofmaxquestions = new Label("Maximum Question Amount");
+        Label amountofmaxquestions = new Label("Number of Tossups");
         MainSettings.getChildren().add(amountofmaxquestions);
-        amountofmaxquestions.setTranslateY(-80);
-        amountofmaxquestions.setTranslateX(-140);
+        amountofmaxquestions.setTranslateY(-110);
         amountofmaxquestions.setFont(new Font("Arial", 13));
 
         Slider maxquestions = new Slider();
@@ -123,9 +127,43 @@ public class Main extends Application {
         maxquestions.setBlockIncrement(200);
         MainSettings.getChildren().add(maxquestions);
         maxquestions.getStyleClass().add("DialStyleSheet.css");
-        maxquestions.setTranslateX(-205);
-        maxquestions.setTranslateY(-45);
-        maxquestions.setMaxWidth(250);
+        maxquestions.setTranslateY(-80);
+        maxquestions.setMaxWidth(220);
+
+        Label amountofbonuses = new Label("Number of Bonuses");
+        MainSettings.getChildren().add(amountofbonuses);
+        amountofbonuses.setTranslateY(-60);
+        amountofbonuses.setFont(new Font("Arial", 13));
+
+        Slider numberofbonuses = new Slider();
+        MainSettings.getChildren().add(numberofbonuses);
+        numberofbonuses.setMin(0);
+        numberofbonuses.setMax(10);
+        numberofbonuses.setValue(0);
+        numberofbonuses.setShowTickLabels(true);
+        numberofbonuses.setShowTickMarks(true);
+        numberofbonuses.setBlockIncrement(50);
+        numberofbonuses.getStyleClass().add("DialStyleSheet.css");
+        numberofbonuses.setTranslateY(-30);
+        numberofbonuses.setMaxWidth(220);
+
+        Label amountofquestiontime = new Label("Time For Each Question");
+        MainSettings.getChildren().add(amountofquestiontime);
+        amountofquestiontime.setTranslateY(-10);
+        amountofquestiontime.setFont(new Font("Arial", 13));
+
+        Slider timeforeachquestions = new Slider();
+        MainSettings.getChildren().add(timeforeachquestions);
+        timeforeachquestions.setMin(0);
+        timeforeachquestions.setMax(10);
+        timeforeachquestions.setValue(0);
+        timeforeachquestions.setShowTickLabels(true);
+        timeforeachquestions.setShowTickMarks(true);
+        timeforeachquestions.setBlockIncrement(50);
+        timeforeachquestions.getStyleClass().add("DialStyleSheet.css");
+        timeforeachquestions.setTranslateY(20);
+        timeforeachquestions.setMaxWidth(220);
+
 
         Button backbutton4 = new Button("Main Menu");
         OtherModeSets.getChildren().add(backbutton4);
@@ -243,16 +281,37 @@ public class Main extends Application {
         nonmainmenubackbutton.setTranslateX(-230);
         nonmainmenubackbutton.setTranslateY(170);
         nonmainmenubackbutton.setFont(new Font("Arial", 12));
-        nonmainmenubackbutton.setId("test");
-        nonmainmenubackbutton.getId();
 
-        System.out.println(nonmainmenubackbutton.getId());
         //Labels for the About Section
         Label aboutsectionheader = new Label("About Javabowl:");
         aboutSection.getChildren().add(aboutsectionheader);
         aboutsectionheader.setTranslateY(-90);
         aboutsectionheader.setTranslateX(10);
         aboutsectionheader.setFont(new Font("Arial", 20));
+
+        TextField textField = new TextField();
+        textField.setMaxWidth(180);
+        textField.setFont(new Font("Arial", 13));
+        textField.setMaxHeight(15);
+        textField.setTranslateX(-5);
+        textField.setTranslateY(-20);
+        textField.setEditable(true);
+        playername.getChildren().add(textField);
+
+        Label playernameheader = new Label("Enter your Name");
+        playername.getChildren().add(playernameheader);
+        playernameheader.getStyleClass().add("test");
+        playernameheader.setTranslateX(-5);
+        playernameheader.setTranslateY(-50);
+        playernameheader.setFont(new Font("Arial", 20));
+
+        Button playernameenter = new Button("Press to Confirm your Player name");
+        playername.getChildren().add(playernameenter);
+        playernameenter.setTranslateY(20);
+        playernameenter.setTranslateX(-5);
+        playernameenter.setFont(new Font("Arial", 12));
+        userName = textField.getText();
+        playernameenter.getStyleClass().add("userbuttonconfirmation");
 
 
         //About Section Details
@@ -269,6 +328,7 @@ public class Main extends Application {
         Scene playertype = new Scene(TypeofPlayer, 800, 400);
         Scene othermodemenu = new Scene(OtherModeSets, 800,400);
         Scene settingsarea = new Scene(MainSettings, 800, 400);
+        Scene playernamescene = new Scene(playername, 800,400);
 
         //Button lambda Clickers for Button Events
         button.setOnAction(event -> primaryStage.setScene(playertype));
@@ -289,6 +349,11 @@ public class Main extends Application {
         backbutton6.setOnAction(event -> primaryStage.setScene(scene));
         backbutton7.setOnAction(event -> primaryStage.setScene(scene));
         playertype6.setOnAction(event -> primaryStage.setScene(difficultyscene));
+        level1difficulty.setOnAction(event -> primaryStage.setScene(playernamescene));
+        speedmode.setOnAction(event -> primaryStage.setScene(difficultyscene));
+        computermode.setOnAction(event -> primaryStage.setScene(difficultyscene));
+        randommode.setOnAction(event -> primaryStage.setScene(difficultyscene));
+        Teams.setOnAction(event -> primaryStage.setScene(difficultyscene));
 
         scene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         difficultyscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
@@ -297,6 +362,7 @@ public class Main extends Application {
         othermodemenu.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         settingsarea.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         settingsarea.getStylesheets().add(getClass().getResource("LabelStyleSheet.css").toExternalForm());
+        playernamescene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.show();

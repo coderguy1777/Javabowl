@@ -7,5 +7,12 @@
     -fx-background-color: #006464;
     -fx-pref-width: 90px;
     -fx-pref-height: 20px;
-    -fx-font-fill: #290d06;
+    -fx-font-fill: #08290e;
+}
+
+.test {
+    -fx-text-fill: darkgoldenrod;
+}
+.userbuttonconfirmation {
+    -fx-pref-width: 220px;
 }
