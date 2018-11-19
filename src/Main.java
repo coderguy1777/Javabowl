@@ -1,10 +1,11 @@
-package MainSourceforJavabowl;
+package MainSourceForJavabowl;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -17,8 +18,6 @@ import java.awt.*;
 
 public class Main extends Application {
 
-    final static Color textColor = Color.WHITE;
-    private String userName;
     private static final String aboutwords =
             "Javabowl is a Javafx application written entirely in Java, developed by Jordan Hill \n" +
                     "and was made for the purpose of being used to practice for quizbowl tournaments, by \n" +
@@ -34,6 +33,7 @@ public class Main extends Application {
         StackPane OtherModeSets = new StackPane();
         StackPane MainSettings = new StackPane();
         StackPane playername = new StackPane();
+        StackPane playernameconfirmation = new StackPane();
 
         //Buttons for Main Menu returning, etc.
         primaryStage.setTitle("Javabowl");
@@ -310,7 +310,6 @@ public class Main extends Application {
         playernameenter.setTranslateY(20);
         playernameenter.setTranslateX(-5);
         playernameenter.setFont(new Font("Arial", 12));
-        userName = textField.getText();
         playernameenter.getStyleClass().add("userbuttonconfirmation");
 
 
@@ -321,6 +320,32 @@ public class Main extends Application {
         aboutsectiondetails.setTranslateX(20);
         aboutsectiondetails.setFont(new Font("Arial", 15));
 
+        Label confirmationofname = new Label(" Your Player Name is: ");
+        playernameconfirmation.getChildren().add(confirmationofname);
+        confirmationofname.setTranslateY(-90);
+        confirmationofname.setFont(new Font("Arial", 20));
+        confirmationofname.getStyleClass().add("textcolorsforuser");
+
+        Label informationfouserconf = new Label ("Please Either click Yes or No to confirm your selected name:");
+        playernameconfirmation.getChildren().add(informationfouserconf);
+        informationfouserconf.setTranslateY(-60);
+        informationfouserconf.setFont(new Font("Arial",15));
+        informationfouserconf.getStyleClass().add("otherlabelcolors");
+
+        Button yesselection = new Button("Yes");
+        playernameconfirmation.getChildren().add(yesselection);
+        yesselection.setTranslateY(-30);
+        yesselection.setTranslateX(-40);
+        yesselection.setFont(new Font("Arial", 15));
+        yesselection.getStyleClass().add("yesbutton");
+
+        Button incorrectnameselection = new Button("No");
+        playernameconfirmation.getChildren().add(incorrectnameselection);
+        incorrectnameselection.setTranslateY(-30);
+        incorrectnameselection.setTranslateX(40);
+        incorrectnameselection.setFont(new Font("Arial", 15));
+        incorrectnameselection.getStyleClass().add("nobutton");
+
         //Scenes used for Button Clicks and storing Buttons
         Scene scene = new Scene(main, 800, 400);
         Scene difficultyscene = new Scene(setDiffculty, 800, 400);
@@ -329,6 +354,7 @@ public class Main extends Application {
         Scene othermodemenu = new Scene(OtherModeSets, 800,400);
         Scene settingsarea = new Scene(MainSettings, 800, 400);
         Scene playernamescene = new Scene(playername, 800,400);
+        Scene playernameconfirmationscene = new Scene(playernameconfirmation, 800,400);
 
         //Button lambda Clickers for Button Events
         button.setOnAction(event -> primaryStage.setScene(playertype));
@@ -354,6 +380,21 @@ public class Main extends Application {
         computermode.setOnAction(event -> primaryStage.setScene(difficultyscene));
         randommode.setOnAction(event -> primaryStage.setScene(difficultyscene));
         Teams.setOnAction(event -> primaryStage.setScene(difficultyscene));
+        playernameenter.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                primaryStage.setScene(playernameconfirmationscene);
+                confirmationofname.setText("Your name is: " + textField.getText());
+            }
+        });
+        incorrectnameselection.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                primaryStage.setScene(playernamescene);
+                playernameheader.setText("Please enter your username again:");
+            }
+        });
+        yesselection.setOnAction(event -> primaryStage.setScene(scene));
 
         scene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         difficultyscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
@@ -363,6 +404,7 @@ public class Main extends Application {
         settingsarea.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         settingsarea.getStylesheets().add(getClass().getResource("LabelStyleSheet.css").toExternalForm());
         playernamescene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+        playernameconfirmationscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.show();
