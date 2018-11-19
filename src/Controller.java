@@ -1,5 +1,4 @@
-package MainSourceforJavabowl;
+package MainSourceForJavabowl;
 
 public class Controller {
-
 }
