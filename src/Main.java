@@ -1,4 +1,4 @@
-package MainSourceForJavabowl;
+package MainSourceforJavabowl;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -15,6 +15,7 @@ import javafx.scene.control.Slider;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.*;
+
 
 public class Main extends Application {
 
@@ -34,6 +35,7 @@ public class Main extends Application {
         StackPane MainSettings = new StackPane();
         StackPane playername = new StackPane();
         StackPane playernameconfirmation = new StackPane();
+        StackPane setselection = new StackPane();
 
         //Buttons for Main Menu returning, etc.
         primaryStage.setTitle("Javabowl");
@@ -346,6 +348,19 @@ public class Main extends Application {
         incorrectnameselection.setFont(new Font("Arial", 15));
         incorrectnameselection.getStyleClass().add("nobutton");
 
+        Label setselector = new Label("Please type in a set to select below");
+        setselection.getChildren().add(setselector);
+        setselector.setTranslateY(-80);
+        setselector.setFont(new Font("Arial", 20));
+        setselector.getStyleClass().add("otherlabelcolors");
+
+        TextField setsearcher = new TextField();
+        setselection.getChildren().add(setsearcher);
+        setsearcher.setTranslateY(-40);
+        setsearcher.setEditable(true);
+        setsearcher.setMaxWidth(180);
+        setsearcher.setMaxHeight(15);
+
         //Scenes used for Button Clicks and storing Buttons
         Scene scene = new Scene(main, 800, 400);
         Scene difficultyscene = new Scene(setDiffculty, 800, 400);
@@ -355,6 +370,7 @@ public class Main extends Application {
         Scene settingsarea = new Scene(MainSettings, 800, 400);
         Scene playernamescene = new Scene(playername, 800,400);
         Scene playernameconfirmationscene = new Scene(playernameconfirmation, 800,400);
+        Scene setselectionscene = new Scene(setselection, 800, 400);
 
         //Button lambda Clickers for Button Events
         button.setOnAction(event -> primaryStage.setScene(playertype));
@@ -394,7 +410,7 @@ public class Main extends Application {
                 playernameheader.setText("Please enter your username again:");
             }
         });
-        yesselection.setOnAction(event -> primaryStage.setScene(scene));
+        yesselection.setOnAction(event -> primaryStage.setScene(setselectionscene));
 
         scene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         difficultyscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
@@ -405,13 +421,13 @@ public class Main extends Application {
         settingsarea.getStylesheets().add(getClass().getResource("LabelStyleSheet.css").toExternalForm());
         playernamescene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         playernameconfirmationscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+        setselectionscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
-        int i = 0;
         launch(args);
     }
 }
