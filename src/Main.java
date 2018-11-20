@@ -1,21 +1,17 @@
-package MainSourceforJavabowl;
+package MainSourceForJavabowl;
 
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import javafx.scene.text.Font;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.awt.*;
-
+import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class Main extends Application {
 
@@ -350,7 +346,7 @@ public class Main extends Application {
 
         Label setselector = new Label("Please type in a set to select below");
         setselection.getChildren().add(setselector);
-        setselector.setTranslateY(-80);
+        setselector.setTranslateY(-70);
         setselector.setFont(new Font("Arial", 20));
         setselector.getStyleClass().add("otherlabelcolors");
 
@@ -360,6 +356,13 @@ public class Main extends Application {
         setsearcher.setEditable(true);
         setsearcher.setMaxWidth(180);
         setsearcher.setMaxHeight(15);
+
+        Button searchfunction = new Button("Search for a Question Packet");
+        setselection.getChildren().add(searchfunction);
+        searchfunction.setTranslateY(-5);
+        searchfunction.setFont(new Font("Arial", 12.5));
+        searchfunction.getStyleClass().add("searchbutton");
+
 
         //Scenes used for Button Clicks and storing Buttons
         Scene scene = new Scene(main, 800, 400);
@@ -411,6 +414,12 @@ public class Main extends Application {
             }
         });
         yesselection.setOnAction(event -> primaryStage.setScene(setselectionscene));
+        searchfunction.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                QuestionPacketSearch();
+            }
+        });
 
         scene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         difficultyscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
@@ -422,9 +431,12 @@ public class Main extends Application {
         playernamescene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         playernameconfirmationscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
         setselectionscene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
-
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public static void QuestionPacketSearch() {
+        SetSelector setSelector = new SetSelector();
     }
 
     public static void main(String[] args) {

@@ -1,4 +1,5 @@
-package MainSourceforJavabowl;
+package MainSourceForJavabowl;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ class SetSelector {
     int BonusesAmount;
     ArrayList<ArrayList<String>>QuestionsStorage;
 
-    public SetSelector(int QuestioNumber, String Questions, String Bonuses, int BonusesAmount) {
+    public void SetSelector(int QuestioNumber, String Questions, String Bonuses, int BonusesAmount) {
         this.QuestioNumber = QuestioNumber;
         this.Questions = Questions;
         this.Bonuses = Bonuses;
