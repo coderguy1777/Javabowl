@@ -1,7 +1,8 @@
-package MainSourceForJavabowl;
+package MainSourceforJavabowl;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -10,7 +11,8 @@ class SetSelector {
     String Questions;
     String Bonuses;
     int BonusesAmount;
-    ArrayList<ArrayList<String>>QuestionsStorage;
+    ArrayList<String>QuestionsOrder;
+    ArrayList<String>BonusesOrder;
 
     public void SetSelector(int QuestioNumber, String Questions, String Bonuses, int BonusesAmount) {
         this.QuestioNumber = QuestioNumber;
@@ -38,9 +40,16 @@ class SetSelector {
     public void FileScan(String Questions, String Bonuses) {
         Scanner scan;
         try {
-            scan = new Scanner(new BufferedReader(new FileReader("sets.txt")));
+            scan = new Scanner(new BufferedReader(new FileReader("ChicagoOpen2018Tossups.json")));
             Questions = scan.nextLine();
             Bonuses = scan.nextLine();
+            while(scan.hasNextLine()) {
+                QuestionsOrder.add(Questions);
+                BonusesOrder.add(Bonuses);
+            }
+            Collections.sort(QuestionsOrder);
+            Collections.sort(BonusesOrder);
+            System.out.println(BonusesOrder);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
