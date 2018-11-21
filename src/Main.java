@@ -437,6 +437,10 @@ public class Main extends Application {
 
     public static void QuestionPacketSearch() {
         SetSelector setSelector = new SetSelector();
+        setSelector.getChicagoOpen();
+        setSelector.getIMSAnity52018();
+        setSelector.getACFNationals2018();
+        setSelector.getPACENSC2018();
     }
 
     public static void main(String[] args) {
