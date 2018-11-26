@@ -37,3 +37,6 @@
     -fx-pref-width: 200px;
     -fx-pref-height: 20px;
 }
+.brightcolors {
+    -fx-text-fill: #fff918;
+}

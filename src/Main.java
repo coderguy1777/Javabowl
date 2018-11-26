@@ -1,4 +1,4 @@
-package MainSourceForJavabowl;
+package MainSourceforJavabowl;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private static final String chicagoopen = "Chicago Open 2018";
     private static final String aboutwords =
             "Javabowl is a Javafx application written entirely in Java, developed by Jordan Hill \n" +
                     "and was made for the purpose of being used to practice for quizbowl tournaments, by \n" +
@@ -417,7 +418,27 @@ public class Main extends Application {
         searchfunction.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                QuestionPacketSearch();
+                SetSelector setSelector = new SetSelector();
+                if(setsearcher.getText().contains("Chicago Open 2018")) {
+                    setSelector.getChicagoOpen();
+                    Label setlabel = new Label("This is the set you selected, " + chicagoopen);
+                    setlabel.setTranslateY(30);
+                    setlabel.setFont(new Font("Arial", 15));
+                    setselection.getChildren().add(setlabel);
+                    setlabel.getStyleClass().add("brightcolors");
+                }
+                if(setsearcher.getText().contains("NASAT 2018")) {
+                    setSelector.getNASATTossups2018();
+                }
+                if(setsearcher.getText().contains("PACE NSC 2018")) {
+                    setSelector.getPACENSC2018();
+                }
+                if(setsearcher.getText().contains("IMSAnity5 2018")) {
+                    setSelector.getIMSAnity52018();
+                }
+                if(setsearcher.getText().contains("ACF Nationals 2018")) {
+                    setSelector.getACFNationals2018();
+                }
             }
         });
 
@@ -435,15 +456,8 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void QuestionPacketSearch() {
-        SetSelector setSelector = new SetSelector();
-        setSelector.getChicagoOpen();
-        setSelector.getIMSAnity52018();
-        setSelector.getACFNationals2018();
-        setSelector.getPACENSC2018();
-    }
-
     public static void main(String[] args) {
+        int i = 0;
         launch(args);
     }
 }
