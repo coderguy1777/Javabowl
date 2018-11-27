@@ -2,6 +2,8 @@ package MainSourceforJavabowl;
 
 import java.io.*;
 import java.io.FileReader;
+import java.util.ArrayList;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
@@ -11,6 +13,9 @@ class SetSelector {
     public String Questions;
     public String Bonuses;
     public int BonusesAmount;
+    ArrayList<Object> ChicagoOpenTossups = new ArrayList<>();
+
+
 
     public void SetSelector(int QuestioNumber, String Questions, String Bonuses, int BonusesAmount) {
         this.QuestioNumber = QuestioNumber;
@@ -44,6 +49,11 @@ class SetSelector {
         IMS2018Anity5Tossups();
     }
 
+    void getNASATTossups2018() {
+        int i = 0;
+        NASAT2018Tossups();
+    }
+
     public String getQuestions(String Questions) {
         int i = 0;
         return Questions;
@@ -72,6 +82,7 @@ class SetSelector {
                 long tournamentid = (long) answers.get("tournament_id");
                 long categoryid = (long)answers.get("category_id");
                 String round = (String) answers.get("round");
+                ChicagoOpenTossups.add(round.toString());
             }
 
         } catch (ParseException e) {
@@ -221,6 +232,50 @@ class SetSelector {
                 long subcategoryid = (long) bonuses4.get("subcategory_id");
                 long tournamentid = (long) bonuses4.get("tournament_id");
                 String leadin = (String) bonuses4.get("leadin");
+
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void NASAT2018Tossups() {
+        JSONParser parser9 = new JSONParser();
+        try {
+            JSONArray i = (JSONArray) parser9.parse(new FileReader("C:\\Users\\lolzk\\IdeaProjects\\JavabowlGUI\\src\\JSONData\\Tossups\\NASAT2018Tossups.json"));
+            for(Object tossupset5 : i) {
+                JSONObject tossups5 = (JSONObject) tossupset5;
+                long id = (long) tossups5.get("id");
+                String text = (String) tossups5.get("text");
+                String answer = (String) tossups5.get("answer");
+                long number = (long) tossups5.get("number");
+                long tournamentid = (long) tossups5.get("tournament_id");
+                long categoryid = (long) tossups5.get("category_id");
+                long subcategoryid = (long) tossups5.get("subcategory_id");
+                long round = (long) tossups5.get("round");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void NASAT2018Bonuses() {
+        JSONParser parser10 = new JSONParser();
+        try {
+            JSONArray j = (JSONArray) parser10.parse(new FileReader("C:\\Users\\lolzk\\IdeaProjects\\JavabowlGUI\\src\\JSONData\\Bonuses\\NASAT2018Bonuses.json"));
+            for(Object bonuseset5 : j) {
+                JSONObject bonuses5 = (JSONObject) bonuseset5;
+                long id = (long) bonuses5.get("id");
+                long number = (long) bonuses5.get("number");
+                long round = (long) bonuses5.get("round");
+                long categoryid = (long) bonuses5.get("category_id");
+                long subcategoryid = (long) bonuses5.get("subcategory_id");
+                long tournamentid = (long) bonuses5.get("tournament_id");
+                String leadin = (String) bonuses5.get("leadin");
             }
         } catch (ParseException e) {
             e.printStackTrace();
