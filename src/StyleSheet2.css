@@ -1,0 +1,18 @@
+.setscene {
+    -fx-background-color: #256ad6;
+    -fx-text-fill: #92c8d6;
+}
+
+.root {
+    -fx-background-color: #5cd695;
+}
+
+.yesbutton {
+    -fx-background-color: #256ad6;
+    -fx-text-fill: #7dd6c6;
+}
+
+.nobutton {
+    -fx-background-color: #d60009;
+    -fx-text-fill: #ff8a80;
+}
