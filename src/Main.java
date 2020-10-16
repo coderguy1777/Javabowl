@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package MainSourceforJavabowl;
 
 import javafx.application.Application;
@@ -461,7 +461,7 @@ public class Main extends Application {
         launch(args);
     }
 }
-=======
+
 package MainSourceforJavabowl;
 
 import javafx.application.Application;
@@ -965,4 +965,3 @@ public class Main extends Application {
         launch(args);
     }
 }
->>>>>>> 70cb24241009930ccf2c2ba2a675385cc56e39b0
